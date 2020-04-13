@@ -1,11 +1,11 @@
 /*	File: Puzzles/river.pro  	Author(sol): M. Malita IMPROVE!
 	Problem:	Cross River
-There are 4 adults who want to cross a river. 
+There are 4 adults who want to cross a river.
 They come upon a boy and a girl playing in a rowboat.
 The boat can hold either two children or one adult.
 Can the adults succeed in crossing the river? If so, how?
   	?- start.
-	Bank   AE CE AW CW  
+	Bank   AE CE AW CW
 	%% Bank Adult-East-Bank Children-East-Bank Adult-West-Bank Children-West-Bank
 	[east, 4, 2, 0, 0]
 	[west, 4, 0, 0, 2]
@@ -31,19 +31,19 @@ start:-    	initial(S),path(S, [], Sol),
 		reverse(Sol,Res),mywrite(Res).
 boat(A,K):- member([A, K], [[1,0],[0,1],[0,2]]).
 move([east, Ae1, Ke1, Aw1, Kw1], [west, Ae2, Ke2, Aw2, Kw2]):-
-		boat(A,K), 
+		boat(A,K),
 		Ae1>=A,Ke1>=K,
 		Ae2 is Ae1 - A,
 		Ke2 is Ke1 - K,
 		Aw2 is Aw1 + A,
 		Kw2 is Kw1 + K.
 move([west, Ae1, Ke1, Aw1, Kw1], [east, Ae2, Ke2, Aw2, Kw2]):-
-		boat(A,K), 
+		boat(A,K),
 		Aw1 >= A,Kw1 >= K,
 		Ae2 is Ae1 + A,
 		Ke2 is Ke1 + K,
 		Aw2 is Aw1 - A,
-		Kw2 is Kw1 - K.	
+		Kw2 is Kw1 - K.
 
 path(N, Path, [N|Path]):-  final(N).
 path(N, Path, Sol):- move(N, NI),not(member(NI, Path)),path(NI, [N|Path], Sol).

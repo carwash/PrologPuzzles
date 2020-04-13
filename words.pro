@@ -1,9 +1,9 @@
 /*  File: Puzzles/words.pro (Sol): Mihaela Malita IMPROVE!
-    Title:  For finding word squares    3x3  
+    Title:  For finding word squares    3x3
 	Generates word squares.
-A word square is an arrangement of letters in a square such that each row and each column is a word in the dictionary. 
+A word square is an arrangement of letters in a square such that each row and each column is a word in the dictionary.
 	?- start.
-	Solution for wordsquare	
+	Solution for wordsquare
 	t-a-b
 	e-p-a
 	n-e-t
@@ -14,11 +14,11 @@ Algorithm:
 		D-E-F
 		G-H-I
 2) Put condition: all row and columns are words:
-   For rows:     
-	word([A,B,C]).  word([D,E.F]).  word([G,H,I]).  
-   For colums:   
-	word([A,D,G]).  word([B,E.H]).  word([C,F,I]).  
-3) Put together all the variables you look for in one predicate. 
+   For rows:
+	word([A,B,C]).  word([D,E.F]).  word([G,H,I]).
+   For colums:
+	word([A,D,G]).  word([B,E.H]).  word([C,F,I]).
+3) Put together all the variables you look for in one predicate.
         wordsq(A,B,C,D,E,F,G,H,I).
 4) Write start. Look for all solutions.
 *****************************************************/
@@ -32,10 +32,10 @@ word([b,e,t]).	word([a,p,e]).
 word([n,e,t]).	word([a,p,t]).
 word([o,f,t]).	word([o,p,t]).
 
-wordsq(A,B,C,D,E,F,G,H,I):-   word([A,B,C]),word([D,E,F]),                   
-      			      word([G,H,I]),word([A,D,G]),                 
-       			      word([B,E,H]),word([C,F,I]).                   
-/* Just one solution   
+wordsq(A,B,C,D,E,F,G,H,I):-   word([A,B,C]),word([D,E,F]),
+      			      word([G,H,I]),word([A,D,G]),
+       			      word([B,E,H]),word([C,F,I]).
+/* Just one solution
 start:- write('Solution for wordsquare\n'),
 	wordsq(A,B,C,D,E,F,G,H,I),
         write(A-B-C),nl,

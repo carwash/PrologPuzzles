@@ -1,14 +1,14 @@
 /*   File: Puzzles/aa1.pro     Author: (sol MM)
      Title: Contest: swimming and biking.  From: Adrian Atanasiu: www.be-logic.ro
-Four students competed in two different tests: swimming and biking. 
+Four students competed in two different tests: swimming and biking.
 Can you establish the final order for each test?
 1. Andrew did not win any competition.
-2. The person who won the swimming contest was the third 
+2. The person who won the swimming contest was the third
    at the bike competition.
 3. Andrew did better than Corey at the swimming contest,
    but Corey was better than Andrew at the bike contest.
 4. Corey was never the last.
-5. Dan won the bike contest, 
+5. Dan won the bike contest,
    but Sandy was better than him at the swimming contest.
 What was the winning order in the swimming and bike contest?
 ?- start,false.

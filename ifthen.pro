@@ -10,7 +10,7 @@ Which if any is true?
 I = [false,false,false,true,false] ;
 */
 start:- find(I),write(I).
-/* mem/2: tests/generates if all the elements in the first list are 
+/* mem/2: tests/generates if all the elements in the first list are
 members in the second list.
 | ?- mem([X,Y,Z],[a,b]).
 X = Y = Z = a ;
@@ -41,6 +41,3 @@ N=2
 count(A,[],0).
 count(A,[A|T],N):- count(A,T,N1),N is N1+1,!.
 count(A,[_|T],N):- count(A,T,N).
-
-
-

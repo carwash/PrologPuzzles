@@ -1,9 +1,9 @@
-/*  File: Puzzles/buffalo.pro 
+/*  File: Puzzles/buffalo.pro
 Title: Babysitting Author: Scott Marley	http://brownbuffalo.sourceforge.net
 Publication: Dell Logic Puzzles April, 1998	Page: 7 Stars: 1
-Each weekday, Bonnie takes care of five of the neighbors' children. The children's names are Keith, Libby, Margo, Nora, and Otto; last names are Fell, Gant, Hall, Ivey, and Jule. Each is a different number of years old, from two to six. Can you find each child's full name and age? 
+Each weekday, Bonnie takes care of five of the neighbors' children. The children's names are Keith, Libby, Margo, Nora, and Otto; last names are Fell, Gant, Hall, Ivey, and Jule. Each is a different number of years old, from two to six. Can you find each child's full name and age?
 1. One child is named Libby Jule.
-2. Keith is one year older than the Ivey child, 
+2. Keith is one year older than the Ivey child,
    who is one year older than Nora.
 3. The Fell child is three years older than Margo.
 4. Otto is twice as many years old as the Hall child.
@@ -13,7 +13,7 @@ USES SWI:member/2, permutation/2
 [libby,jule,6]
 [margo,hall,2]
 [nora,grant,3]
-[otto,ivey,4] 
+[otto,ivey,4]
 *********************************************/
 start(Sol):- F=[keith,libby,margo,nora,otto],
              L= [fell,grant,hall,ivey,jule],

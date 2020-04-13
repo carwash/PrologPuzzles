@@ -1,6 +1,6 @@
 /* File: Puzzles/costume.pro  Solution MMalita
 From: Dell- Math Puzzles Logic Problems,	Jan 2002 p.15
-Title: The costume ball 
+Title: The costume ball
 1	Four couples in all
 	Attended a costume ball.
 2	The lady dressed as a cat
@@ -11,7 +11,7 @@ Title: The costume ball
 	But he got there before the Prince.
 5	The witch (not Sue) is married to Chuck,
 	Who was dressed as Donald Duck.
-6	Mary came in after Lou, 
+6	Mary came in after Lou,
 	Both were there before Sue.
 7	The Gipsy arrived before Ann,
 	Neither is wed to Batman.
@@ -23,7 +23,7 @@ I= [[lou,bear,tess,gipsy],[vince,batman,mary,snow_white],[matt,prince,sue,cat],
 				          second     third        last
 [[Man,Costume_man,Woman,Costume_woman],[_,_,_,_],[_,_,_,_],[_,_,_,_]]
 **********************************************************/
-boy([vince,chuck,lou,matt]). 		
+boy([vince,chuck,lou,matt]).
 girl([sue,mary,ann,sue]).
 costume_boy([batman,donald_duck,prince,bear]).
 costume_girl([witch,gipsy,cat,snow_white]).
@@ -31,7 +31,7 @@ costume_girl([witch,gipsy,cat,snow_white]).
 start(Sol):-  boy(B),girl(W),costume_boy(C),costume_girl(Cw),
 	   Sol=[[M1,C1,W1,Cw1],[M2,C2,W2,Cw2],[M3,C3,W3,Cw3],[M4,C4,W4,Cw4]], % 1
 	   member([matt,_,_,cat],Sol), 					% 2
-       Sol=[X1,X2,[matt,_,_,cat],_],				% 3 
+       Sol=[X1,X2,[matt,_,_,cat],_],				% 3
 	   (member(bear,X1) ; member(bear,X2)),			% 3
        before([vince,_,_,_],[_,prince,_,_],Sol),    % 4
 	   member([chuck,donald_duck,X,witch],Sol), 	% 5
@@ -43,6 +43,6 @@ start(Sol):-  boy(B),girl(W),costume_boy(C),costume_girl(Cw),
 	   permutation([C1,C2,C3,C4],C),
 	   permutation([W1,W2,W3,W4],G),
 	   permutation([Cw1,Cw2,Cw3,Cw4],Cw),
-  	   vince \== M1,					% 4  
-	   X\== sue,     					% 5                  
+  	   vince \== M1,					% 4
+	   X\== sue,     					% 5
 	   G1 \== batman, A1 \== batman. 	% 7

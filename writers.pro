@@ -1,8 +1,8 @@
 /* File: Puzzles/writers.pro  Author: solution Mihaela Malita
 Title: What do they write? From: Adrian Atanasiu: www.be-logic.ro
-Six writers travel in a train in the same wagon, we shall call them 
+Six writers travel in a train in the same wagon, we shall call them
 Black, Yellow, Blue, Green, Red and White.
-One is  essayist, one is historian, one write pamphlets, one is novelist, 
+One is  essayist, one is historian, one write pamphlets, one is novelist,
 one is play writer and poet.
 Each of them wrote a book that is read by some other person in the wagon.
  1. Mr. Black reads essays.
@@ -20,7 +20,7 @@ What kind of writer is  each person?
 [[X1,W1,R1] = [Last_name, Writes, Reads]
 1 2 3
 4 5 6
-Uses SWI:  nextto/3,  
+Uses SWI:  nextto/3,
 nth1(?Index, ?List, ?Elem) Succeeds  when  the  Index-th element  of  List unifies  with  Elem. Counting starts at 1.
 ********************************************************/
 rez([[green,pamphlets,_],[black,novels,_],[white,poems,_],[yellow,theater,_],[blue,history,_],[red,essays,_]]).
@@ -47,12 +47,12 @@ start(S):- S=[[X1,W1,R1],[X2,W2,R2],[X3,W3,R3],[X4,W4,R4],[X5,W5,R5],[X6,W6,R6]]
         %% 7. Mr. Yellow is the brother in law of the novelist.
 	not(member([yellow,novels,_],S)),
       	%% 2. Mr. Blue does not like to sit in the corner in the direction of the train.
-        nth1(Nbb,S,[blue,_,_]), Nbb\==6,     
+        nth1(Nbb,S,[blue,_,_]), Nbb\==6,
         %% 8. Mr. Black is staying in a corner and does not like history.
-	nth1(Nb,S,[black,_,_]),corner(Nb), 
+	nth1(Nb,S,[black,_,_]),corner(Nb),
 	not(member([black,history,_],S)),
-   	%% 5. The essayist  sits in front of the historian.	
+   	%% 5. The essayist  sits in front of the historian.
 	nth1(Ne,S,[_,essays,_]), nth1(Nh,S,[_,history,_]),
-        vis_a_vis(Ne,Nh),  
+        vis_a_vis(Ne,Nh),
         %% 11. Mr. Red reads a book of pamphlets.
 	not(member([white,_,poems],S)).

@@ -1,5 +1,5 @@
 /* File: Puzzles/sudoku.pro        Author: MMalita
-Title:  Sudoku GENERATOR.          From: http://www.sudoku.com/           
+Title:  Sudoku GENERATOR.          From: http://www.sudoku.com/
 all ints 1-9 no repeats blocks (9) also do not repeat
 SWI predicate: permutation/2  and is_set/1
 ?- start.
@@ -21,27 +21,27 @@ start:-	Nine=[1,2,3,4,5,6,7,8,9],
 	permutation(L3,Nine),good(L1,L3),good(L2,L3),
 	write_square(S),
 	permutation(L4,Nine),
-     different(L1,L4),different(L2,L4),different(L3,L4),        
+     different(L1,L4),different(L2,L4),different(L3,L4),
      write_square(S),
      permutation(L5,Nine),good(L4,L5),
-	different(L1,L5),different(L2,L5),different(L3,L5), 
+	different(L1,L5),different(L2,L5),different(L3,L5),
      write_square(S),
 	permutation(L6,Nine),good(L4,L6),good(L5,L6),
-	different(L1,L6),different(L2,L6),different(L3,L6), 
+	different(L1,L6),different(L2,L6),different(L3,L6),
      write_square(S),
      permutation(L7,Nine),
-	different(L1,L7),different(L2,L7),different(L3,L7), 
-	different(L4,L7),different(L5,L7),different(L6,L7), 
+	different(L1,L7),different(L2,L7),different(L3,L7),
+	different(L4,L7),different(L5,L7),different(L6,L7),
      write_square(S),
 	permutation(L8,Nine),good(L7,L8),
-	different(L1,L8),different(L2,L8),different(L3,L8), 
-	different(L4,L8),different(L5,L8),different(L6,L8), 
+	different(L1,L8),different(L2,L8),different(L3,L8),
+	different(L4,L8),different(L5,L8),different(L6,L8),
      write_square(S),
  	permutation(L9,Nine),good(L7,L9),good(L8,L9),
-    different(L1,L9),different(L2,L9),different(L3,L9), 
-	different(L4,L9),different(L5,L9),different(L6,L9), 
+    different(L1,L9),different(L2,L9),different(L3,L9),
+	different(L4,L9),different(L5,L9),different(L6,L9),
 	write_square(S).
-        
+
 write_square(S):- nl,forall(member(X,S),(write(X),nl)),nl.
 
 /* two lines are different:
@@ -64,4 +64,3 @@ good([A1,A2,A3,A4,A5,A6,A7,A8,A9],[B1,B2,B3,B4,B5,B6,B7,B8,B9]):-
     is_set([A1,A2,A3,B1,B2,B3]),
     is_set([A4,A5,A6,B4,B5,B6]),
     is_set([A7,A8,A9,B7,B8,B9]).
-                                                                          

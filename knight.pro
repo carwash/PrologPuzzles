@@ -1,19 +1,19 @@
 /* File: Puzzles/knight.pro
 Title:  Knight’s Tour 3x3 board        Luger: page 650.
-Can the chess piece called horse/knight move around an empty 
-chessboard and touch each of the 3 x 3 squares once and only once? 
-The knight makes L-shaped moves (over two in one direction and 
-then over one in a perpendicular 	direction). 
-Write a program to find out and display the path. 
+Can the chess piece called horse/knight move around an empty
+chessboard and touch each of the 3 x 3 squares once and only once?
+The knight makes L-shaped moves (over two in one direction and
+then over one in a perpendicular 	direction).
+Write a program to find out and display the path.
 The knight starts from the up-left corner.
-		----------------- 
+		-----------------
 		1   |	2   |	3
 		-----------------
 		4   |	5   |	6
 		-----------------
 		7   |	8   |	9
 ----------------------------------------------------------*/
-move(1,6).	move(1,8). move(2,9).	move(2,7).	
+move(1,6).	move(1,8). move(2,9).	move(2,7).
 move(3,4).	move(3,8). move(4,9).	move(4,3).
 move(6,7).	move(6,1). move(7,6).	move(7,2).
 move(8,1).	move(8,3). move(9,2).	move(9,4).
@@ -26,7 +26,7 @@ Solution 1. If there is a path says yes.
 path(Z,Z).
 path(X,Y):- move(X,W),path(W,Y).
 ----------------------------------------------------------*/
-/* Solution 2. 	Keep track of visited nodes using a predicate 
+/* Solution 2. 	Keep track of visited nodes using a predicate
 called: visited(?Node)
 	?- path(1,9).
 	Yes
@@ -61,7 +61,7 @@ path(X,Y,L,R):- move(X,W),not(member(W,L)),path(W,Y,[W|L],R).
 ---------------------------------------------------------*/
 /*Graph (nodes and arcs): path in a graph
 We interpret the move(Node1,Node2) as arc in a graph with Nodes 1-9.
-Our problem is to find a path between to given Nodes S, 
+Our problem is to find a path between to given Nodes S,
 F: initial(S) and final(F)
 All the possible paths (from 1 to 9):
 	?-start,false.
@@ -71,7 +71,7 @@ All the possible paths (from 1 to 9):
 %% Finding a path in graph used for finding a path from 1 to 9
 initial(1).		%% 1 is initial node
 final(9).			%% 9 is final node
-%% Starting Node is Start, Sol is a list of Nodes 
+%% Starting Node is Start, Sol is a list of Nodes
 %% beginning with Start ending with the final Node.
 start:- initial(Start),path(Start,[Start],Sol),
         reverse(Sol,Res),write(Res).

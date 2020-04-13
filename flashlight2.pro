@@ -1,11 +1,11 @@
 /* 	File: Puzzles/flashlight2.pro 	Solution: M.Malita
 Title: Four Men Crossing a Bridge (from Microsoft interview process)
-There are four men who would all like to cross a rickety old bridge. 
-The old bridge will only support 2 men at a time, and it is night time, 
-so every crossing must use the one flashlight that they all share. 
-The four men each have different walking speeds; 
+There are four men who would all like to cross a rickety old bridge.
+The old bridge will only support 2 men at a time, and it is night time,
+so every crossing must use the one flashlight that they all share.
+The four men each have different walking speeds;
 the fastest each of them can cross is 1 minute, 2 minutes, 5 minutes, and 10 minutes.
-If they pair up, since they must share the flashlight, 
+If they pair up, since they must share the flashlight,
 they can only cross in the time that it would take the slower of the two.
 Given that the shortest time to get them all across is 17 minutes total, how should they all cross?
 */
@@ -14,7 +14,7 @@ We describe the problem as Nodes in a graph and the solution means to find a pat
 the initial node to the final node.
 assume the names of the four people are: a,b,c,d
 state = node is graph
-state = [Time,Flash_place,[a,b,c,d],[]] 
+state = [Time,Flash_place,[a,b,c,d],[]]
 Bank can be left (l) or right (r).  Thus Flash_place is l or r.
 [5,l,[a,b,c],[d]] - means 5 minutes passed and a,b,c are on the left bank and d is on the right
 | ?- start,fail.
@@ -58,7 +58,7 @@ findtime([A,B],Tim):- tim(A,Ta),tim(B,Tb),Tim is max(Ta,Tb),!.
 /* take all the combinations of 1 person, and 2 persons from our group: [a,b,c,d] */
 cross(X,L):- comb(1,L,X); comb(2,L,X).
 
-/* mem1(Lr,L). For comb/3. Same as mem/2 but does not generate [a,b] and [b,a]. 	
+/* mem1(Lr,L). For comb/3. Same as mem/2 but does not generate [a,b] and [b,a].
 	?- mem1([X,Y],[a,b,c]).
 	[a,b][a,c][b,c]
 */
@@ -66,7 +66,7 @@ mem1([],Y).
 mem1([H|T],Y):-member(H,Y),rest(H,Y,New),mem1(T,New).
 
 rest(A,L,R):- append(_,[A|R],L),!.
-/* comb(N,L,Res). Combinations. Arrangements without " order".	
+/* comb(N,L,Res). Combinations. Arrangements without " order".
 	| ?- comb(2,[a,b,c],I).
 	I = [a,b] ;	I = [a,c] ;	I = [b,c] ;
 */

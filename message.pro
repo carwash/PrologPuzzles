@@ -1,8 +1,8 @@
 /* 	File: Puzzles/message.pro	Author: M. Malita
         Title:  Message sending
-Email is out of order at St. Mary's College and the teacher wants 
+Email is out of order at St. Mary's College and the teacher wants
 to tell Robert something urgent.
-The teacher meets Craig and asks him to tell Robert she wants to speak with him. 
+The teacher meets Craig and asks him to tell Robert she wants to speak with him.
 Craig says that if he meets Robert its OK, but else he will send the message to everyone he meets and the message will go further.
 Each student tells each student he meets that the teacher waits for Robert in her office.
 The students meet each other (we don't know in what order):
@@ -28,11 +28,11 @@ Ex:-  ?- start,nl,false.
 [ro,da,ch,ad,ja,cr]
 [ro,da,ja,cr]
 */
-arc(cr,jo).	arc(cr,ja).	
+arc(cr,jo).	arc(cr,ja).
 arc(ja,ki).	arc(ja,ad).	arc(ja,da).
 arc(ad,sc).	arc(ad,je).
 arc(je,jo).	arc(je,sc).
-arc(ki,ch). 	
+arc(ki,ch).
 arc(ch,da).	arc(ch,ad).
 arc(da,ro).
 arc1(Y,X):- arc(X,Y);arc(Y,X).

@@ -18,5 +18,5 @@ start(Final):- Final=[[_,_,wine],[_,_,cookie],[_,_,cofee],[_,_,_]],
 			member([_,vivien,Bv],Final),Bv \== cookie,
             member([clark,ann,Ba],Final), Ba \== cookie,
             member([_,mary,Bm],Final), Bm \== wine,
-            member([davidson,_,_],Final), 
+            member([davidson,_,_],Final),
             member([X,rachel,cofee],Final), X \== davidson.

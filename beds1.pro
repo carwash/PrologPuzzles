@@ -1,7 +1,7 @@
 /* File: Puzzles/beds1.pro	Author: sol MMalita
 Title: Bunk beds From:  http://eduplace.com/math/brain/65-294.html
-All 6 girls in the junior cabin at camp sleep in bunk beds. 
-Each girl has a different color blanket on her bed. 
+All 6 girls in the junior cabin at camp sleep in bunk beds.
+Each girl has a different color blanket on her bed.
 The beds are lined up in a row with red, black, yellow, brown, blue and green blankets.
 1. Reeva and Haley is closest to the door.
 2. The color of the blankets on the bottom bunks all begin with the same letter
@@ -13,7 +13,7 @@ The beds are lined up in a row with red, black, yellow, brown, blue and green bl
 8. The brown blanket is at the end of a row.
 9. The yellow is above the black blanket.
 Sol= [[Name,Color],[Name,Color],...]
-They are in the following order bottom, up, bottom, up 
+They are in the following order bottom, up, bottom, up
 from left to right
 ?- start(I).
 I = [[reeva,black],[haley,yellow],[kayla,blue],[beth,red],[liza,brown],[zoe,green]] ;
@@ -32,7 +32,4 @@ start(Sol):- Sol=[[N1,C1],[N2,C2],[kayla,C3],[N4,C4],[N5,C5],[N6,C6]],((N1=reeva
                 member([black,yellow],[[C1,C2],[C3,C4],[C5,C6]]), /* 9 */
                 member(green,[C1,C2,C3,C4,C5,C6]),
                 member([beth,C],Sol),member(C,[red,yellow,green]),   /* 3 */
-		not(N4=zoe). /* 7 */		
-               
-
-                
+		not(N4=zoe). /* 7 */
