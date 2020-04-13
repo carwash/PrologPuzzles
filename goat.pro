@@ -3,7 +3,7 @@
 A farmer has to cross a river with a wolf, a goat and a cabbage.
 He has a boat, but in the boat he can take just one thing.
 He cannot let the goat alone with the wolf or the goat with the cabbage.
-It’s obvious why. What is the solution?
+Itâ€™s obvious why. What is the solution?
 We describe the problem as Nodes in a graph and the solution means to find a path from the initial node to the final node.
 	state(s) = node in graph 
 	s(farmer(Bank),goat(Bank),cabbage(Bank),wolf(Bank)).

@@ -1,5 +1,5 @@
 /* File: Puzzles/knight.pro
-Title:  Knight’s Tour 3x3 board        Luger: page 650.
+Title:  Knightâ€™s Tour 3x3 board        Luger: page 650.
 Can the chess piece called horse/knight move around an empty 
 chessboard and touch each of the 3 x 3 squares once and only once? 
 The knight makes L-shaped moves (over two in one direction and 

@@ -12,7 +12,7 @@ Can you help these two figure out the order in which Harriet bought each pair of
 Determine: Order - Shoes - Store 
 ?-start(X).
 S=[[pumps,shoePlace],[espadrilles,footFarm],[sandals,tooties],[flats,heelsHandcart]].
-Solution by % © Copyright Doug Edmunds 2000
+Solution by % Â© Copyright Doug Edmunds 2000
 First, purple pumps, The Shoe Place 
 Second, ecru espadrilles, Foot Farm 
 Third, suede sandals, Tooties 
