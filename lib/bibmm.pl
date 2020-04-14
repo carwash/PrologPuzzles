@@ -1,11 +1,11 @@
-/* 	File: bibmm.pl Author: MMalita
+/*  File: bibmm.pl  Author: MMalita
 Work in Progress!! Library for Logic Puzzles
-	SWI: append/3 member/2 intersection/3	permutations/2 	flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
+	SWI: append/3 member/2 intersection/3 permutations/2 flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
 	all/3
 	all_prop(P,L): if all in a list have Property P/1
 	arrange/3
 	comb/3
-	first/2	first([H|_],H).	same as nth0(0,L,H). count/3
+	first/2 first([H|_],H). same as nth0(0,L,H). count/3
 	count_list_all/3
 	count_list_comb/3
 	count_list_arange/3
@@ -15,21 +15,21 @@ Work in Progress!! Library for Logic Puzzles
 	list_comb/3
 	list_all/3
 	list_arrange/3
-	mem/2 (=subset)		SWI: subset/2
+	mem/2 (=subset) SWI: subset/2
 	mem1/2
-    SWI: nth0/3
-	place/3 			SWI: nth1(?Index, ?List, ?Elem)
-	remove/3			SWI: select(E,L,R)
+	SWI: nth0/3
+	place/3  SWI: nth1(?Index, ?List, ?Elem)
+	remove/3 SWI: select(E,L,R)
 	rest/3
 	next/3
 	SWI: nextto(X,Y,L).
-	before/3			SWI: nextto(X,Y,L).
-	neighbor/5		diagonal/1 	not_diagonal/1
-	set/1  (=no_duplicates,=alldifferent)	SWI: is_set/1
-	set_equal/2   		SWI: permutation/2
-	sum/2 				SWI: sumlist/2
+	before/3 SWI: nextto(X,Y,L).
+	neighbor/5  diagonal/1  not_diagonal/1
+	set/1 (=no_duplicates,=alldifferent)  SWI: is_set/1
+	set_equal/2 SWI: permutation/2
+	sum/2       SWI: sumlist/2
 	write_list/1
-% 	first(List,First).
+%	first(List,First).
 first(List,H):- List=[H|_].
 /* generate_sol(S,N). Generate solution list - size N */
 generate_sol(S,N):- length(S,N).
@@ -63,16 +63,16 @@ all_prop(P,L):-forall(member(X,L),(F=..[P,X],call(F))).
 */
 /* mem(Lr,L). Elements from Lr are all members in L.
 	?- mem([X,Y],[a,b,c]).
-	X = Y = a ;	X = a ,Y = b ;	X = a ,Y = c ;	X = b ,Y = a ;
-	X = Y = b ;	X = b ,Y = c ;	X = c ,Y = a ;	X = c ,Y = b ;
+	X = Y = a ;  X = a ,Y = b ;  X = a ,Y = c ;  X = b ,Y = a ;
+	X = Y = b ;  X = b ,Y = c ;  X = c ,Y = a ;  X = c ,Y = b ;
 	X = Y = c ;
 */
 mem([],Y).
 mem([H|T],Y):-member(H,Y),mem(T,Y).
 /* all(N,L,X). All possible N-length lists with elements from [a,b,c,d]:
 	| ?- all(2,[a,b,c],I).
-	I = [a,a] ;	I = [a,b] ;	I = [a,c] ;	I = [b,a] ;
-	I = [b,b] ;	I = [b,c] ;	I = [c,a] ;	I = [c,b] ;	I = [c,c] ;
+	I = [a,a] ;  I = [a,b] ;  I = [a,c] ;  I = [b,a] ;
+	I = [b,b] ;  I = [b,c] ;  I = [c,a] ;  I = [c,b] ;  I = [c,c] ;
 */
 all(N,L,X):-length(X,N),mem(X,L).
 /* list_all(N,L,R).
@@ -87,7 +87,7 @@ list_all(N,L,Res):-findall(X,all(N,L,X),Res).
 count_list_all(N,L,Many):-findall(X,all(N,L,X),Res),length(Res,Many).
 /* arrange(N,L,R). Lists have to be sets! That is: elements do not repeat.
 	?- arrange(2,[a,b,c],R).
-	R = [a,b] ;	R = [a,c] ;	R = [b,a] ;	R = [b,c] ;	R = [c,a] ;	R = [c,b] ;
+	R = [a,b] ;  R = [a,c] ;  R = [b,a] ;  R = [b,c] ;  R = [c,a] ;  R = [c,b] ;
 */
 arrange(N,L,X):-length(X,N),mem(X,L),is_set(X).
 no_duplicates(M):- is_set(M).
@@ -113,9 +113,9 @@ count_list_permutations(L,N):-list_permutations(L,R),length(R,N).
 mem1([],Y).
 mem1([H|T],Y):-member(H,Y),rest(H,Y,New),mem1(T,New).
 /* rest(A,L,R). For comb/3. Returns the rest of the list after the first occurrence of A.
-	| ?- rest(a,[a,b,c,d],I).	I = [b,c,d]
-	| ?- rest(a,[b,c,a,d],I).	I = [d]
-	| ?- rest(a,[b,c,d],I).		I = []
+	| ?- rest(a,[a,b,c,d],I).  I = [b,c,d]
+	| ?- rest(a,[b,c,a,d],I).  I = [d]
+	| ?- rest(a,[b,c,d],I).    I = []
 rest(X,[],[]):-!.
 rest(X,[X|T],T):-!.
 rest(X,[_|T],R):-rest(X,T,R).
@@ -124,7 +124,7 @@ rest(X,[_|T],R):-rest(X,T,R).
 rest(A,L,R):-Y=[A|R],append(X,Y,L),!.
 /* comb(N,L,Res). Combinations. Arrangements without " order".
 	| ?- comb(2,[a,b,c],I).
-	I = [a,b] ;	I = [a,c] ;	I = [b,c] ;
+	I = [a,b] ;  I = [a,c] ;  I = [b,c] ;
 */
 comb(N,L,X):-length(X,N),mem1(X,L).
 /* list_comb(N,L,Res).
@@ -133,20 +133,20 @@ comb(N,L,X):-length(X,N),mem1(X,L).
 */
 list_comb(N,L,Res):- findall(X,comb(N,L,X),Res).
 /* count_list_comb(N,L,Many). Formula is: C(k,n) = n!/ k! (n-k)!
-	or Pascal's formula:	C(k,n)=C(k,n-1) + C(k-1,n-1)
+	or Pascal's formula:  C(k,n)=C(k,n-1) + C(k-1,n-1)
 	?-  count_list_comb(2,[a,b,c,d],L).
 	L = 6
 */
 count_list_comb(N,L,Many):- list_comb(N,L,Res),length(Res,Many).
 /* SWI: select/3. Removes the first occurrence of an element.
 	?- select(a,[a,b,a,d,a],I).
-	I = [b,a,d,a] ;	I = [a,b,d,a] ; I = [a,b,a,d] ;
+	I = [b,a,d,a] ;  I = [a,b,d,a] ; I = [a,b,a,d] ;
 	?- select(X,[a,b,c],I).
-	X = a ,	I = [b,c] ;	X = b ,	I = [a,c] ;	X = c ,	I = [a,b] ;
+	X = a ,  I = [b,c] ;  X = b ,  I = [a,c] ;  X = c ,  I = [a,b] ;
 	?- select(m,[a,b,c,d],I).
 	false
 	?- select(m,I,[b]).
-	I = [m,b] ;	I = [b,m] ;
+	I = [m,b] ;  I = [b,m] ;
 We can write remove/3 as follows, with same effect as follows:
 	remove(X,[],[]):-!.
 	remove(X,[X|T],T):-!.
@@ -158,30 +158,30 @@ We can write remove/3 as follows, with same effect as follows:
 	?- right(a,b,[c,a,b,m,n]). %% SWI: nextto/3
 	true
 */
-right(X,Y,L):- 	nextto(X,Y,L).
+right(X,Y,L):- nextto(X,Y,L).
 /* next(X,Y,L). If X and Y are next to each other in the list.
 	?- next(X,Y,[a,b,c]).
-	X = a ,Y = b ;	X = b ,Y = c ;	X = b ,Y = a ;	X = c ,Y = b ;
+	X = a ,Y = b ;  X = b ,Y = c ;  X = b ,Y = a ;  X = c ,Y = b ;
 	?- next(a,b,[m,a,b,c]),next(a,c,[m,a,b,c,d]).
 	true.
 */
-next(X,Y,L):- 	nextto(X,Y,L) ; nextto(Y,X,L).
+next(X,Y,L):- nextto(X,Y,L) ; nextto(Y,X,L).
 /* neighbor(+X,+Y,X1,Y1,+S). Two cells are neighbors in an array size S
 - starts from 0. Assume X and Y are in the range 0 - S.
 between(0,I,5) means 0 <= I <= 5
 	?-neighbor(1,1,2,2,3).
 	true
 	?-neighbor(1,2,I,J,2).
-	I = J = 2 ;	I = 0 ,J = 2 ;
-	I = J = 1 ;	I = 2 ,	J = 1 ; I = 0 ,	J = 1 ;
+	I = J = 2 ;  I = 0 ,J = 2 ;
+	I = J = 1 ;  I = 2 ,  J = 1 ; I = 0 ,  J = 1 ;
 */
 neighbor(X,Y,X1,Y1,S):- ((X1 is X+1, Y=Y1);
-			(X1 is X-1, Y=Y1);(X1=X, Y1 is Y+1);
-			(X1=X, Y1 is Y-1);(X1 is X+1, Y1 is Y-1);
-			(X1 is X-1, Y1 is Y-1);(X1 is X+1, Y1 is Y+1);
-			(X1 is X-1, Y1 is Y+1)),between(0,X1,S),
-			between(0,Y1,S).
-/*  	Chessboard (any SIZE!). Are on a the same diagonal. */
+	 (X1 is X-1, Y=Y1);(X1=X, Y1 is Y+1);
+	 (X1=X, Y1 is Y-1);(X1 is X+1, Y1 is Y-1);
+	 (X1 is X-1, Y1 is Y-1);(X1 is X+1, Y1 is Y+1);
+	 (X1 is X-1, Y1 is Y+1)),between(0,X1,S),
+	between(0,Y1,S).
+/* Chessboard (any SIZE!). Are on a the same diagonal. */
 diagonal(X/Y,X1/Y1):-   A is abs(X-X1),A is abs(Y-Y1).
-/*	Not on the same diagonal*/
+/* Not on the same diagonal */
 not_diagonal([X/Y,X1/Y1]):- A is abs(X-X1),B is abs(Y-Y1),A \= B.

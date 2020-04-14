@@ -1,5 +1,5 @@
-/* File: anagram.pl
-   Title: Generates all anagrams of given a word
+/*  File: anagram.pl
+    Title: Generates all anagrams of given a word
 ?-start.
 Write your name? ale.
 here are the anagrams:
@@ -14,6 +14,6 @@ L = [84, 117, 114, 105, 110, 103]
 X = def
 *************************************************************/
 start:-write('Write your name? '),read(X),
-		write('\nhere are the anagrams:\n'),
-		name(X,L),permutation(L,R),name(Word,R),
-		write(Word),tab(5).
+	write('\nhere are the anagrams:\n'),
+	name(X,L),permutation(L,R),name(Word,R),
+	write(Word),tab(5).

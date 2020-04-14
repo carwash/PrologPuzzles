@@ -1,37 +1,37 @@
-/* File: knight.pl
-Title:  Knight’s Tour 3x3 board        Luger: page 650.
+/*  File: knight.pl
+    Title: Knight’s Tour 3x3 board  Luger: page 650.
 Can the chess piece called horse/knight move around an empty
 chessboard and touch each of the 3 x 3 squares once and only once?
 The knight makes L-shaped moves (over two in one direction and
-then over one in a perpendicular 	direction).
+then over one in a perpendicular direction).
 Write a program to find out and display the path.
 The knight starts from the up-left corner.
-		-----------------
-		1   |	2   |	3
-		-----------------
-		4   |	5   |	6
-		-----------------
-		7   |	8   |	9
+	-----------------
+	1   |	2   |	3
+	-----------------
+	4   |	5   |	6
+	-----------------
+	7   |	8   |	9
 ----------------------------------------------------------*/
-move(1,6).	move(1,8). move(2,9).	move(2,7).
-move(3,4).	move(3,8). move(4,9).	move(4,3).
-move(6,7).	move(6,1). move(7,6).	move(7,2).
-move(8,1).	move(8,3). move(9,2).	move(9,4).
+move(1,6).  move(1,8).  move(2,9).  move(2,7).
+move(3,4).  move(3,8).  move(4,9).  move(4,3).
+move(6,7).  move(6,1).  move(7,6).  move(7,2).
+move(8,1).  move(8,3).  move(9,2).  move(9,4).
 /*
 Solution 1. If there is a path says yes.
-	?- path(1,9).
-	true.
-	?- path(1,5).
-	ERROR: Out of local stack
+?- path(1,9).
+true.
+?- path(1,5).
+ERROR: Out of local stack
 path(Z,Z).
 path(X,Y):- move(X,W),path(W,Y).
 ----------------------------------------------------------*/
-/* Solution 2. 	Keep track of visited nodes using a predicate
+/* Solution 2. Keep track of visited nodes using a predicate
 called: visited(?Node)
-	?- path(1,9).
-	Yes
-	?- path(1,5).
-	No
+?- path(1,9).
+Yes
+?- path(1,5).
+No
 :- dynamic visited/1.
 path(Z,Z).
 path(X,Y):- move(X,W),not(visited(W)),assert(visited(W)),path(W,Y).
@@ -46,7 +46,7 @@ false
 path(Z,Z,L).
 path(X,Y,L):- move(X,W),not(member(W,L)),path(W,Y,[W|L]).
 ----------------------------------------------------------*/
-/*Solution 4.  Build and display the path in a list L
+/*Solution 4. Build and display the path in a list L
 ?- path(1,5,[1],L).
 false
 ?- path(1,9,[1],L).
@@ -69,13 +69,13 @@ All the possible paths (from 1 to 9):
 	[9,4,3,8,1]
 ----------------------------------------------------------*/
 %% Finding a path in graph used for finding a path from 1 to 9
-initial(1).		%% 1 is initial node
-final(9).			%% 9 is final node
+initial(1).  %% 1 is initial node
+final(9).    %% 9 is final node
 %% Starting Node is Start, Sol is a list of Nodes
 %% beginning with Start ending with the final Node.
 start:- initial(Start),path(Start,[Start],Sol),
-        reverse(Sol,Res),write(Res).
+	reverse(Sol,Res),write(Res).
 
 path(Node,Path,[Node|Path]):- final(Node).
 path(Node,Path,Sol):- move(Node,N1),not(member(N1,Path)),
-		      	path(N1,[Node|Path],Sol).
+	path(N1,[Node|Path],Sol).

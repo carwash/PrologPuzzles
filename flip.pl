@@ -1,14 +1,14 @@
-/* File: flip.pl   Author: Mark Herod - Student 2005
-   Title: Flipping Coins
+/*  File: flip.pl   Author: Mark Herod - Student 2005
+    Title: Flipping Coins
 Place 3 coins with their indicated side facing up as shown.
 In 3 moves arrange the coins so that all three have the same side facing up.
 A move counts of flipping 2 coins over to their opposite side.
-		H	T 	H
+	H	T	H
 Note: (Always different configuration)
 Flipping the pair of outer coins 3 times doesn't count!
-	state(s) = node is graph
-	[head, tail, head] = [h,t,h]
-	?- start,fail.
+state(s) = node is graph
+[head, tail, head] = [h,t,h]
+?- start,fail.
 	[h, t, h]
 	[t, h, h]
 	[h, h, t]
@@ -20,21 +20,21 @@ Flipping the pair of outer coins 3 times doesn't count!
 	[t, t, t]
 **********************************************/
 start:- initial(S),path(S,[],Sol),
-        reverse(Sol,Res),length(Sol,4),
-        prettyprint(Res).
+	reverse(Sol,Res),length(Sol,4),
+	prettyprint(Res).
 
 %% at the beginning All are on the same bank
-	initial([h,t,h]).
+initial([h,t,h]).
 %%
-	final([h,h,h]).
-    final([t,t,t]).
+final([h,h,h]).
+final([t,t,t]).
 
 path(Node,Path,[Node|Path]):- final(Node).
 path(Node,Path,Sol):- move(Node,N1),not(member(N1,Path)),
-                      path(N1,[Node|Path],Sol).
+	path(N1,[Node|Path],Sol).
 %%
-	opp(h,t).
-	opp(t,h).
+opp(h,t).
+opp(t,h).
 
 prettyprint(L):- forall(member(X,L),(write(X),nl)).
 

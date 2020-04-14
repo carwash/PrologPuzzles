@@ -1,5 +1,5 @@
-/* 	File: flashlight2.pl 	Solution: M.Malita
-Title: Four Men Crossing a Bridge (from Microsoft interview process)
+/*  File: flashlight2.pl  Solution: M.Malita
+    Title: Four Men Crossing a Bridge (from Microsoft interview process)
 There are four men who would all like to cross a rickety old bridge.
 The old bridge will only support 2 men at a time, and it is night time,
 so every crossing must use the one flashlight that they all share.
@@ -43,10 +43,10 @@ tim(c,5).
 tim(d,10).
 /* define the arcs (or move conditions from a state node) to another state(node) */
 arc([T1,F1,L1,R1], [T2,F2,L2,R2]):- opp(F1,F2),
-		((F1=l,cross(X,L1),
-        take(X,L1,L2),append(X,R1,R2),findtime(X,T),T2 is T1+T);
-    	(F1=r,cross(X,R1),
-        take(X,R1,R2),append(X,L1,L2),findtime(X,T),T2 is T1+T)),T2 < 18.
+	((F1=l,cross(X,L1),
+	  take(X,L1,L2),append(X,R1,R2),findtime(X,T),T2 is T1+T);
+	 (F1=r,cross(X,R1),
+	  take(X,R1,R2),append(X,L1,L2),findtime(X,T),T2 is T1+T)),T2 < 18.
 
 /* remove all elements in S from L result is in R */
 take(S,L,R):- findall(Z,(member(Z,L),not(member(Z,S))),R).
@@ -68,6 +68,6 @@ mem1([H|T],Y):-member(H,Y),rest(H,Y,New),mem1(T,New).
 rest(A,L,R):- append(_,[A|R],L),!.
 /* comb(N,L,Res). Combinations. Arrangements without " order".
 	| ?- comb(2,[a,b,c],I).
-	I = [a,b] ;	I = [a,c] ;	I = [b,c] ;
+	I = [a,b] ; I = [a,c] ; I = [b,c] ;
 */
 comb(N,L,X):-length(X,N),mem1(X,L).

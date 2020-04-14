@@ -1,5 +1,5 @@
-/* File: jos1.pl   Author: (Sol MM)
-   Title: Finding the profession
+/*  File: jos1.pl  Author: (Sol MM)
+    Title: Finding the profession
 Smith, Baker, Carpenter and Tailor have each a profession
 (smith, baker, carpenter, tailor) but not showed by their names.
 Each of them has a son.
@@ -13,10 +13,10 @@ and
 find the professions of the parents and sons.
 */
 professions([smith,baker,carpenter,tailor]). % list of professions
-/* S = Smith's profession 	   			B = Baker's profession
-   C = Carpenter's profession	   		T = Taylor's profession
-   Son_S = Smith son's profession 		Son_B = Baker son's profession
-   Son_C = Carpenter son's profession	Son_T = Taylor son's profession
+/* S = Smith's profession                B = Baker's profession
+   C = Carpenter's profession            T = Taylor's profession
+   Son_S = Smith son's profession        Son_B = Baker son's profession
+   Son_C = Carpenter son's profession    Son_T = Taylor son's profession
 */
 sol([S,B,C,T],[Son_S,Son_B,Son_C,Son_T]):-
 	professions(L),
@@ -34,5 +34,5 @@ sol([S,B,C,T],[Son_S,Son_B,Son_C,Son_T]):-
 	not(B) = Son_B,
 	not(C) = Son_T,
 	not(T) = Son_C,
-    B=Son_C, 		% Baker has the same profession as Carpenter's son.
-   	Son_S=baker. 	% Smith's son is a baker
+	B=Son_C,        % Baker has the same profession as Carpenter's son.
+	Son_S=baker.    % Smith's son is a baker
