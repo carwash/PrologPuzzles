@@ -26,26 +26,43 @@ Bank   AE CE AW CW
 [east, 0, 2, 4, 0]
 [west, 0, 0, 4, 2]
 ***********************************************************/
-initial([east,4,2,0,0]).  final([west,0,0,4,2]).
-start:- initial(S),path(S, [], Sol),
-	reverse(Sol,Res),mywrite(Res).
-boat(A,K):- member([A, K], [[1,0],[0,1],[0,2]]).
-move([east, Ae1, Ke1, Aw1, Kw1], [west, Ae2, Ke2, Aw2, Kw2]):-
+initial([east,4,2,0,0]).
+final([west,0,0,4,2]).
+
+start :-
+	initial(S),
+	path(S, [], Sol),
+	reverse(Sol,Res),
+	mywrite(Res).
+
+boat(A,K) :- member([A, K], [[1,0],[0,1],[0,2]]).
+
+move([east, Ae1, Ke1, Aw1, Kw1], [west, Ae2, Ke2, Aw2, Kw2]) :-
 	boat(A,K),
-	Ae1>=A,Ke1>=K,
+	Ae1 >= A,
+	Ke1 >= K,
 	Ae2 is Ae1 - A,
 	Ke2 is Ke1 - K,
 	Aw2 is Aw1 + A,
 	Kw2 is Kw1 + K.
-move([west, Ae1, Ke1, Aw1, Kw1], [east, Ae2, Ke2, Aw2, Kw2]):-
+move([west, Ae1, Ke1, Aw1, Kw1], [east, Ae2, Ke2, Aw2, Kw2]) :-
 	boat(A,K),
-	Aw1 >= A,Kw1 >= K,
+	Aw1 >= A,
+	Kw1 >= K,
 	Ae2 is Ae1 + A,
 	Ke2 is Ke1 + K,
 	Aw2 is Aw1 - A,
 	Kw2 is Kw1 - K.
 
-path(N, Path, [N|Path]):- final(N).
-path(N, Path, Sol):- move(N, NI),not(member(NI, Path)),path(NI, [N|Path], Sol).
+path(N, Path, [N|Path]) :- final(N).
+path(N, Path, Sol) :-
+	move(N, NI),
+	not(member(NI, Path)),
+	path(NI, [N|Path], Sol).
 
-mywrite(L):- write('Bank AE CE AW CW'),nl,forall(member(X,L),(write(X),nl)).
+mywrite(L) :-
+	write('Bank AE CE AW CW'), nl,
+	forall(
+		member(X,L),
+		(write(X), nl)
+	).

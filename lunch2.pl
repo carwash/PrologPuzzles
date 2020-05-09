@@ -31,16 +31,20 @@ sol([[Child,Sandwich_B,Sandwich_E,Fruit_B,Fruit_E,Dessert_B,Dessert_E],
 	 [Child,Sandwich_B,Sandwich_E,Fruit_B,Fruit_E,Dessert_B,Dessert_E],
 	 [Child,Sandwich_B,Sandwich_E,Fruit_B,Fruit_E,Dessert_B,Dessert_E],
 	 [Child,Sandwich_B,Sandwich_E,Fruit_B,Fruit_E,Dessert_B,Dessert_E]]).
-Order is not important in this example. that is why we write
-Child= [C1,C2,C3,C4], otherwise we get all combinations.
+Order is not important in this example. That is why we write
+Child = [C1,C2,C3,C4], otherwise we get all combinations.
 */
 
-start(Sol):- Dessert=[candy_bar,cupcake,cookie,brownie],
-	Fruit=[grapes,orange,apple,banana],
-	Sand=[turkey,peanut,ham_cheese,bologna],
-	Child=[may,jay,ray,faye],Child=[C1,C2,C3,C4],
-	Sol=[[C1,Sb1,Se1,Fb1,Fe1,Db1,De1],[C2,Sb2,Se2,Fb2,Fe2,Db2,De2],[C3,Sb3,Se3,Fb3,Fe3,Db3,De3],
-	     [C4,Sb4,Se4,Fb4,Fe4,Db4,De4]],
+start(Sol) :-
+	Dessert = [candy_bar,cupcake,cookie,brownie],
+	Fruit   = [grapes,orange,apple,banana],
+	Sand    = [turkey,peanut,ham_cheese,bologna],
+	Child   = [may,jay,ray,faye],
+	Child   = [C1,C2,C3,C4],
+	Sol = [[C1,Sb1,Se1,Fb1,Fe1,Db1,De1],
+		   [C2,Sb2,Se2,Fb2,Fe2,Db2,De2],
+		   [C3,Sb3,Se3,Fb3,Fe3,Db3,De3],
+	       [C4,Sb4,Se4,Fb4,Fe4,Db4,De4]],
 %3. Jay traded his fruit for Ray's orange.
 	member([jay,Sbjay,_,Fbjay,orange,_,_],Sol),
 %8. The child who ate Jay's sandwich also ate the candy bar.
@@ -63,34 +67,54 @@ start(Sol):- Dessert=[candy_bar,cupcake,cookie,brownie],
 	permutation([Fe1,Fe2,Fe3,Fe4],Fruit),
 	permutation([Db1,Db2,Db3,Db4],Dessert),
 	permutation([De1,De2,De3,De4],Dessert),
-	list_comb(2,Sol,Pairs),all_prop(intersection_2,Pairs).
+	list_comb(2,Sol,Pairs),
+	all_prop(intersection_2,Pairs).
 
 /* %1. Each child swapped with each friend exactly once,always trading like items
 All the pairs have intersection_2 means 2 items in common
 Take all the pairs (only once) and see if they have exactly 2 elements in common:
 */
-intersection_2([X,Y]):-intersection(X,Y,R),length(R,2).
+intersection_2([X,Y]) :-
+	intersection(X,Y,R),
+	length(R,2).
 /* mem1(Lr,L). For comb/3. Same as mem/2 but does not generate [a,b] and [b,a].
 	?- mem1([X,Y],[a,b,c]).
 	[a,b][a,c][b,c]
 */
 mem1([],Y).
-mem1([H|T],Y):-member(H,Y),rest(H,Y,New),mem1(T,New).
+mem1([H|T],Y) :-
+	member(H,Y),
+	rest(H,Y,New),
+	mem1(T,New).
 
-rest(A,L,R):-Y=[A|R],append(X,Y,L),!.
+rest(A,L,R) :-
+	Y=[A|R],
+	append(X,Y,L),
+	!.
 /* comb(N,L,Res). Combinations. Arrangements without " order".
 	| ?- comb(2,[a,b,c],I).
 	I = [a,b] ; I = [a,c] ; I = [b,c] ;
 */
-comb(N,L,X):-length(X,N),mem1(X,L).
+comb(N,L,X) :-
+	length(X,N),
+	mem1(X,L).
 /* list_comb(N,L,Res).
 	?-  list_comb(2,[a,b,c,d],L).
 	L = [[a,b],[a,c],[a,d],[b,c],[b,d],[c,d]]
 */
-list_comb(N,L,Res):- findall(X,comb(N,L,X),Res).
+list_comb(N,L,Res) :-
+	findall(
+		X,
+		comb(N,L,X),
+		Res
+	).
 /* all_prop(P,L). All elements from a list (first level) have property Prop.
 EX: check if all are integers in a list
 ?- P=integer,L=[1,2,3],forall(member(X,L),(F=..[P,X],call(F))).
 P = integer,L = [1, 2, 3].
 */
-all_prop(P,L):-forall(member(X,L),(F=..[P,X],call(F))).
+all_prop(P,L) :-
+	forall(
+		member(X,L),
+		(F=..[P,X], call(F))
+	).

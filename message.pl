@@ -14,7 +14,7 @@ The students meet each other (we don't know in what order):
 7) David meets Robert
 Do you think the teacher will wait for ever in her office until Robert comes?
 Display all the possible paths from Craig to Robert.
-Ex:-  ?- start,nl,false.
+Ex :-  ?- start,nl,false.
 [ro,da,ch,ki,ja,ad,je,jo,cr]
 [ro,da,ja,ad,je,jo,cr]
 [ro,da,ja,ki,ch,ad,je,jo,cr]
@@ -34,11 +34,18 @@ arc(je,jo).  arc(je,sc).
 arc(ki,ch).
 arc(ch,da).  arc(ch,ad).
 arc(da,ro).
-arc1(Y,X):- arc(X,Y);arc(Y,X).
+arc1(Y,X) :- arc(X,Y); arc(Y,X).
 
-initial(cr). final(ro).
-start:- initial(S),bkt(S,[],Sol),write(Sol).
+initial(cr).
+final(ro).
 
-bkt(Node,Path,[Node|Path]):- final(Node).
-bkt(Node,Path,Sol):- arc1(Node,N1), not(member(N1,Path)),
+start :-
+	initial(S),
+	bkt(S,[],Sol),
+	write(Sol).
+
+bkt(Node,Path,[Node|Path]) :- final(Node).
+bkt(Node,Path,Sol) :-
+	arc1(Node,N1),
+	not(member(N1,Path)),
 	bkt(N1,[Node|Path],Sol).

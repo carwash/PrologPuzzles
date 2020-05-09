@@ -18,21 +18,21 @@ professions([smith,baker,carpenter,tailor]). % list of professions
    Son_S = Smith son's profession        Son_B = Baker son's profession
    Son_C = Carpenter son's profession    Son_T = Taylor son's profession
 */
-sol([S,B,C,T],[Son_S,Son_B,Son_C,Son_T]):-
+sol([S,B,C,T],[Son_S,Son_B,Son_C,Son_T]) :-
 	professions(L),
-	member(S,L),not(S)=smith,
-	member(B,L),not(B)=baker,
-	member(C,L),not(C)=carpenter,
-	member(T,L),not(T)=taylor,
+	member(S,L), not(S) = smith,
+	member(B,L), not(B) = baker,
+	member(C,L), not(C) = carpenter,
+	member(T,L), not(T) = taylor,
 /* The sons do not have the same profession as their name shows */
-	member(Son_S,L),not(Son_S)=smith,
-	member(Son_B,L),not(Son_B)=baker,
-	member(Son_C,L),not(Son_C)=carpenter,
-	member(Son_T,L),not(Son_T)=taylor,
+	member(Son_S,L), not(Son_S) = smith,
+	member(Son_B,L), not(Son_B) = baker,
+	member(Son_C,L), not(Son_C) = carpenter,
+	member(Son_T,L), not(Son_T) = taylor,
 /* The sons do not have the same profession as their fathers either */
 	not(S) = Son_F,
 	not(B) = Son_B,
 	not(C) = Son_T,
 	not(T) = Son_C,
-	B=Son_C,        % Baker has the same profession as Carpenter's son.
-	Son_S=baker.    % Smith's son is a baker
+	B = Son_C,        % Baker has the same profession as Carpenter's son.
+	Son_S = baker.    % Smith's son is a baker

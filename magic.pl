@@ -22,13 +22,14 @@ Magic Square 3x3
 	4-3-8
 	2-7-6
 **************************************************************/
-start:-	S=[A,B,C,D,E,F,G,H,I],
+start :-
+	S=[A,B,C,D,E,F,G,H,I],
 	permutation([1,2,3,4,5,6,7,8,9],S),
-	sumlist([A,B,C],N), sumlist([D,E,F],N),
-	sumlist([G,H,I],N),
-	sumlist([A,D,G],N), sumlist([B,E,H],N),
-	sumlist([C,F,I],N),write_square(S).
+	sumlist([A,B,C],N), sumlist([D,E,F],N), sumlist([G,H,I],N),
+	sumlist([A,D,G],N), sumlist([B,E,H],N), sumlist([C,F,I],N),
+	write_square(S).
 
-write_square([A,B,C,D,E,F,G,H,I]):- write(A-B-C),nl,
-	write(D-E-F),nl,
-	write(G-H-I),nl,nl.
+write_square([A,B,C,D,E,F,G,H,I]) :-
+	write(A-B-C), nl,
+	write(D-E-F), nl,
+	write(G-H-I), nl, nl.

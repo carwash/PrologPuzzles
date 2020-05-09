@@ -15,20 +15,27 @@ What was the winning order in the swimming and bike contest?
 Swimming contest=[sandy,andrew,corey,dan]
 Bike contest= [dan,corey,sandy,andrew]
 *****************************************************/
-start:- sol(S,B),write('Swimming contest='),write(S),nl,
-	write('Bike contest= '),write(B),nl.
+start :-
+	sol(S,B),
+	write('Swimming contest='), write(S),nl,
+	write('Bike contest= '),    write(B),nl.
 
-sol(Swim,Bike):- St=[sandy,andrew,corey,dan],
-	permutation(Swim,St),permutation(Bike,St),
-	Swim=[Hs|_],andrew\==Hs,Bike=[Hb|_],andrew\==Hb,     %% 1
-	Bike=[_,_,Hs,_],                                     %% 2
-	before(andrew,corey,Swim),before(corey,andrew,Bike), %% 3
-	not(last(Swim,corey)),not(last(Bike,corey)),         %% 4
-	Bike=[dan|_],before(sandy,dan,Swim).                 %% 5
+sol(Swim,Bike) :-
+	St = [sandy,andrew,corey,dan],
+	permutation(Swim,St),
+	permutation(Bike,St),
+	Swim = [Hs|_],
+	andrew \== Hs, Bike = [Hb|_], andrew \== Hb,          %% 1
+	Bike = [_,_,Hs,_],                                    %% 2
+	before(andrew,corey,Swim), before(corey,andrew,Bike), %% 3
+	not(last(Swim,corey)), not(last(Bike,corey)),         %% 4
+	Bike = [dan|_], before(sandy,dan,Swim).               %% 5
 
 /*  ?-before(a,c,[m,a,v,c,d]).
     true
 before (X,Y,List) checks if X is before Y in the List.
 Starts from Left to right (normal order..).
 */
-before(X,Y,L):- append(_,[X|R],L),member(Y,R).
+before(X,Y,L) :-
+	append(_,[X|R],L),
+	member(Y,R).

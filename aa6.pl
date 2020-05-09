@@ -10,13 +10,14 @@ Find the whole name of each lady and what is she supposed to bring next week?
 Final = [[ LastName, FirstName, Bring]...]
 Solutions found with the program: ?- start(I).
 I = [[clark,ann,wine],[davidson,mary,cookie],
-[brown,rachel,cofee],[andrew,vivien,chocolate]] ;
+[brown,rachel,coffee],[andrew,vivien,chocolate]] ;
 ****************************************************************/
-start(Final):- Final=[[_,_,wine],[_,_,cookie],[_,_,cofee],[_,_,_]],
+start(Final) :-
+	Final = [[_,_,wine],[_,_,cookie],[_,_,coffee],[_,_,_]],
 	member([andrew,_,chocolate],Final),
-	member([brown,_,Bb],Final), Bb \== cookie),
-	member([_,vivien,Bv],Final),Bv \== cookie,
-	member([clark,ann,Ba],Final), Ba \== cookie,
-	member([_,mary,Bm],Final), Bm \== wine,
+	member([brown,_,Bb],Final),    Bb \== cookie),
+	member([_,vivien,Bv],Final),   Bv \== cookie,
+	member([clark,ann,Ba],Final),  Ba \== cookie,
+	member([_,mary,Bm],Final),     Bm \== wine,
 	member([davidson,_,_],Final),
-	member([X,rachel,cofee],Final), X \== davidson.
+	member([X,rachel,coffee],Final), X \== davidson.

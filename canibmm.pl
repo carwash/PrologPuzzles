@@ -39,17 +39,24 @@ final([w,0,0,3,3]).
 /* Explain the states (nodes) prohibited by my problem,
 Bad nodes should be avoided when you search for the path.
 */
-bad([_,M1,C1,M2,C2]):- (M1 > 0,M1 < C1);(M2 > 0,M2 < C2).
+bad([_,M1,C1,M2,C2]) :-
+	(M1 > 0, M1 < C1);
+	(M2 > 0, M2 < C2).
 
 /* The problem is reduced to the pattern:
    find a path in a directed graph.
    The following predicates are almost the same as in graph theory.
    We added the condition (not(bad(State) ).
 */
-start:- initial(S),path(S,[],Sol),reverse(Sol,Res),my_write(Res).
+start :-
+	initial(S),
+	path(S,[],Sol),
+	reverse(Sol,Res),
+	my_write(Res).
 
-path(Node,Path,[Node|Path]):- final(Node).
-path(Node,Path,Sol):- move(Node,N1),
+path(Node,Path,[Node|Path]) :- final(Node).
+path(Node,Path,Sol) :-
+	move(Node,N1),
 	not(bad(N1)),
 	not(member(N1,Path)),
 	path(N1,[Node|Path],Sol).
@@ -60,17 +67,17 @@ path(Node,Path,Sol):- move(Node,N1),
    Take from one bank the configuration,
    add the configuration to the other bank
 */
-move([e, Me1, Ce1, Mw1, Cw1], [w, Me2, Ce2, Mw2, Cw2]):-
+move([e, Me1, Ce1, Mw1, Cw1], [w, Me2, Ce2, Mw2, Cw2]) :-
 	boat(M,C), %% how many Missionaries and Cannibals are in the boat
-	Me1 >= M,Ce1 >= C, %% check if it is a good proposal
-	Me2 is Me1 - M,    %% take them from one shore
+	Me1 >= M, Ce1 >= C, %% check if it is a good proposal
+	Me2 is Me1 - M,     %% take them from one shore
 	Ce2 is Ce1 - C,
-	Mw2 is Mw1 + M,    %% put them on another shore
+	Mw2 is Mw1 + M,     %% put them on another shore
 	Cw2 is Cw1 + C.
 
-move([w, Me1, Ce1, Mw1, Cw1], [e, Me2, Ce2, Mw2, Cw2]):-
+move([w, Me1, Ce1, Mw1, Cw1], [e, Me2, Ce2, Mw2, Cw2]) :-
 	boat(M,C),
-	Mw1 >= M,Cw1 >= C,
+	Mw1 >= M, Cw1 >= C,
 	Me2 is Me1 + M,
 	Ce2 is Ce1 + C,
 	Mw2 is Mw1 - M,
@@ -81,7 +88,11 @@ move([w, Me1, Ce1, Mw1, Cw1], [e, Me2, Ce2, Mw2, Cw2]):-
 M=0     C=1
 M=1     C=0 ...
 */
-boat(M,C):- member([M,C],[[0,1],[1,0],[1,1],[2,0],[0,2]]).
+boat(M,C) :- member([M,C],[[0,1],[1,0],[1,1],[2,0],[0,2]]).
 
 /* Write each element of a list on a separate line */
-my_write(L):- write('Boat Me Ce Mw Cw'),nl,forall(member(X,L),(write(X),nl)).
+my_write(L) :-
+	write('Boat Me Ce Mw Cw'), nl,
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

@@ -32,18 +32,20 @@ word([b,e,t]).  word([a,p,e]).
 word([n,e,t]).  word([a,p,t]).
 word([o,f,t]).  word([o,p,t]).
 
-wordsq(A,B,C,D,E,F,G,H,I):- word([A,B,C]),word([D,E,F]),
+wordsq(A,B,C,D,E,F,G,H,I) :-
+	word([A,B,C]),word([D,E,F]),
 	word([G,H,I]),word([A,D,G]),
 	word([B,E,H]),word([C,F,I]).
 /* Just one solution
-start:- write('Solution for wordsquare\n'),
+start :- write('Solution for wordsquare\n'),
 	wordsq(A,B,C,D,E,F,G,H,I),
 	write(A-B-C),nl,
 	write(D-E-F),nl,
 	write(G-H-I).
 ---------------------------------------------*/
 /* All solutions   */
-start:- write('Solution for wordsquare\n'),
+start :-
+	write('Solution for wordsquare\n'),
 	forall(wordsq(A,B,C,D,E,F,G,H,I),
 		   (write('\nWord Square:\n'),
 			write(A-B-C),nl,

@@ -18,9 +18,10 @@ Second, ecru espadrilles, Foot Farm
 Third, suede sandals, Tooties
 Fourth, fuchsia flats, Heels in a Handcart
 *******************************************************/
-start(S):- S=[[H1,T1],[H2,T2],[H3,T3],[H4,T4]],
-	Shoes=[pumps,espadrilles,sandals,flats],
-	Stores=[shoePlace,footFarm,tooties,heelsHandcart],
+start(S) :-
+	S = [[H1,T1],[H2,T2],[H3,T3],[H4,T4]],
+	Shoes = [pumps,espadrilles,sandals,flats],
+	Stores = [shoePlace,footFarm,tooties,heelsHandcart],
 	permutation([H1,H2,H3,H4],Shoes),
 	permutation([T1,T2,T3,T4],Stores),
 	member([flats,heelsHandcart],S),    %% 1. Harriet bought fuchsia flats at Heels in a Handcart.

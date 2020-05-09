@@ -19,8 +19,11 @@ state(s) = node is graph
 	[t, h, h]
 	[t, t, t]
 **********************************************/
-start:- initial(S),path(S,[],Sol),
-	reverse(Sol,Res),length(Sol,4),
+start :-
+	initial(S),
+	path(S,[],Sol),
+	reverse(Sol,Res),
+	length(Sol,4),
 	prettyprint(Res).
 
 %% at the beginning All are on the same bank
@@ -29,15 +32,21 @@ initial([h,t,h]).
 final([h,h,h]).
 final([t,t,t]).
 
-path(Node,Path,[Node|Path]):- final(Node).
-path(Node,Path,Sol):- move(Node,N1),not(member(N1,Path)),
+path(Node,Path,[Node|Path]) :- final(Node).
+path(Node,Path,Sol) :-
+	move(Node,N1),
+	not(member(N1,Path)),
 	path(N1,[Node|Path],Sol).
 %%
 opp(h,t).
 opp(t,h).
 
-prettyprint(L):- forall(member(X,L),(write(X),nl)).
+prettyprint(L) :-
+	forall(
+		member(X,L),
+		(write(X), nl)
+	).
 
-move([A,B,C],[A1,B1,C]):- opp(A,A1),opp(B,B1).  % first two coins
-move([A,B,C],[A1,B,C1]):- opp(A,A1),opp(C,C1).  % two coins
-move([A,B,C],[A,B1,C1]):- opp(C,C1),opp(B,B1).  % last two coins
+move([A,B,C],[A1,B1,C]) :- opp(A,A1), opp(B,B1).  % first two coins
+move([A,B,C],[A1,B,C1]) :- opp(A,A1), opp(C,C1).  % two coins
+move([A,B,C],[A,B1,C1]) :- opp(C,C1), opp(B,B1).  % last two coins
