@@ -167,6 +167,12 @@ right(X,Y,L):- 	nextto(X,Y,L).
 	true.
 */
 next(X,Y,L):- 	nextto(X,Y,L) ; nextto(Y,X,L).
+/* 	before(X,Y,List) checks if X is before Y in the List.
+    Starts from Left to right (normal order..).
+    ?-before(a,c,[m,a,v,c,d]).
+	true
+*/
+before(X,Y,L):- append(_,[X|R],L),member(Y,R).
 /* neighbor(+X,+Y,X1,Y1,+S). Two cells are neighbors in an array size S
 - starts from 0. Assume X and Y are in the range 0 - S.
 between(0,I,5) means 0 <= I <= 5
