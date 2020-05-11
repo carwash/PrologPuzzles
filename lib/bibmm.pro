@@ -29,6 +29,7 @@ Work in Progress!! Library for Logic Puzzles
 	set_equal/2   		SWI: permutation/2				
 	sum/2 				SWI: sumlist/2
 	write_list/1
+*/
 % 	first(List,First).
 first(List,H):- List=[H|_].
 /* generate_sol(S,N). Generate solution list - size N */
