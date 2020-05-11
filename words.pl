@@ -39,8 +39,8 @@ wordsq(A,B,C,D,E,F,G,H,I) :-
 /* Just one solution
 start :- write('Solution for wordsquare\n'),
 	wordsq(A,B,C,D,E,F,G,H,I),
-	write(A-B-C),nl,
-	write(D-E-F),nl,
+	write(A-B-C), nl,
+	write(D-E-F), nl,
 	write(G-H-I).
 ---------------------------------------------*/
 /* All solutions   */
@@ -48,6 +48,6 @@ start :-
 	write('Solution for wordsquare\n'),
 	forall(wordsq(A,B,C,D,E,F,G,H,I),
 		   (write('\nWord Square:\n'),
-			write(A-B-C),nl,
-			write(D-E-F),nl,
+			write(A-B-C), nl,
+			write(D-E-F), nl,
 			write(G-H-I))).

@@ -16,7 +16,7 @@
    Neither is wed to Batman.
 8. If Snow White arrived after Tess,
    Then how was each couple dressed?
-?- sol(I),write(I),fail.
+?- start(I).
 I= [[lou,bear,tess,gipsy],[vince,batman,mary,snow_white],[matt,prince,sue,cat],
     [chuck,donald_duck,ann,witch]] %%(There is only one solution.)
                                         second     third        last
@@ -32,7 +32,7 @@ start(Sol) :-
 	costume_boy(C), costume_girl(Cw),
 	Sol = [[M1,C1,W1,Cw1],[M2,C2,W2,Cw2],[M3,C3,W3,Cw3],[M4,C4,W4,Cw4]], % 1
 	member([matt,_,_,cat],Sol),                  % 2
-	Sol = [X1,X2,[matt,_,_,cat],_],                % 3
+	Sol = [X1,X2,[matt,_,_,cat],_],              % 3
 	(member(bear,X1) ; member(bear,X2)),         % 3
 	before([vince,_,_,_],[_,prince,_,_],Sol),    % 4
 	member([chuck,donald_duck,X,witch],Sol),     % 5
@@ -47,4 +47,4 @@ start(Sol) :-
 	vince \== M1,  % 4
 	X \== sue,     % 5
 	G1 \== batman, % 7
-	A1 \== batman.
+	A1 \== batman, !.

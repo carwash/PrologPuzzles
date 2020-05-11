@@ -1,26 +1,31 @@
 /*  File: lashlight.pl  Author: MM
     Title: Four Men Crossing a Bridge (from Microsoft interview process)
 There are four men who would all like to cross a rickety old bridge.
-The old bridge will only support 2 men at a time, and it is night time, so every
-crossing must use the one flashlight that they all share.
-The four men each have different walking speeds; the fastest each of them can
-cross is 1 minute, 2 minutes, 5 minutes, and 10 minutes. If they pair up, since
-they must share the flashlight, they can only cross in the time that it would take
-the slower of the two. Given that the shortest time to get them all across is
-17 minutes total, how should they all cross?
+The old bridge will only support 2 men at a time, and it is night time,
+so every crossing must use the one flashlight that they all share.
+The four men each have different walking speeds;
+the fastest each of them can cross is 1 minute, 2 minutes, 5 minutes, and 10 minutes.
+If they pair up, since they must share the flashlight,
+they can only cross in the time that it would take the slower of the two.
+Given that the shortest time to get them all across is 17 minutes total, how should they all cross?
+*/
+/*
 We describe the problem as Nodes in a graph and the solution means to find a path from
 the initial node to the final node.
+Assume the names of the four people are: a,b,c,d
 state = node is graph
 state = [Time,Flash_place,a(l),b(l),c(l),d(l)]
 Bank can be left (l) or right (r).  Thus Flash_place is l or r.
 | ?- start,false.
-Found sol=[17,r,a(r),b(r),c(r),d(r)]
+Found sol =
+[17,r,a(r),b(r),c(r),d(r)]
 [15,l,a(l),b(l),c(r),d(r)]
 [14,r,a(r),b(l),c(r),d(r)]
 [4,l,a(r),b(l),c(l),d(l)]
 [2,r,a(r),b(r),c(l),d(l)]
 [0,l,a(l),b(l),c(l),d(l)]
-Found sol=[17,r,a(r),b(r),c(r),d(r)]
+Found sol =
+[17,r,a(r),b(r),c(r),d(r)]
 [15,l,a(l),b(l),c(r),d(r)]
 [13,r,a(l),b(r),c(r),d(r)]
 [3,l,a(l),b(r),c(l),d(l)]
@@ -30,12 +35,13 @@ Found sol=[17,r,a(r),b(r),c(r),d(r)]
 start :-
 	initial(S),
 	path(S,[],Sol),
-	write('Found sol='),
+	write('Found sol ='), nl,
 	forall(
 		member(X,Sol),
 		(write(X), nl)
 	).
 
+% Finding a path in a graph from initial node to final node
 path(N,P,[N|P]) :- final(N).
 path(N,P,Sol) :-
 	arc(N,N1),
@@ -45,13 +51,13 @@ path(N,P,Sol) :-
 initial([0,l,a(l),b(l),c(l),d(l)]). %% start l=left r=right
 final([17,r,a(r),b(r),c(r),d(r)]).  %% in the end all on the same side
 
-/* opposite */
+% Opposite bank
 opp(l,r).  opp(r,l).
 
-/* time for crossing the bridge - time is a system predicate */
+% Time for crossing the bridge - time is a system predicate
 tim(a,1).	tim(b,2).	tim(c,5).	tim(d,10).
 
-/* define the arcs (or move conditions from a state node) to another state(node) */
+% Define the arcs (or move conditions from a state node) to another state(node)
 arc([T1,X,a(A1),b(B1),c(C1),d(D1)], [T2,Y,a(A2),b(B2),c(C2),d(D2)]) :-
 	opp(X,Y),
 	((X=C1,A2=A1,B2=B1,D2=D1,C2=Y, tim(c,Tc), T2 is T1+Tc); % c moves alone

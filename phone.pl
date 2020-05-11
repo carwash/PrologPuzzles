@@ -49,7 +49,7 @@ has_vowels([H|T],N) :-
 has_vowels([_|T],N) :- has_vowels(T,N).
 
 start :-
-	write('Your phone as a list (ex:[4,3,6,6]='),
+	write('Your phone as a list (ex: [4,3,6,6] = '),
 	read(Phone),
 	(phone(Phone,L),
 	 (has_vowels(L,2),

@@ -1,7 +1,7 @@
 /*  File: canibmm.pl  Author: (sol) MM
     Title: Missionaries and cannibals
 On a river bank there are 3 cannibals and 3 missionaries.
-Here is a boat with 2 places for crossing the river.
+There is a boat with 2 places for crossing the river.
 If on a bank there remain more cannibals than missionaries
 then it is dangerous, since the cannibals may eat them.
 How could they all cross the river without being in danger?

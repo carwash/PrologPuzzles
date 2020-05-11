@@ -1,4 +1,4 @@
-/*  File: arch.pl  Author: Mark T. Zegarelli
+/*  File: archi.pl  Author: Mark T. Zegarelli
     Title: Arch Friends  From http://brownbuffalo.sourceforge.net
     Publication: Dell Logic Puzzles, Issue: April, 1998, Page: 7 Stars: 1
 Harriet, upon returning from the mall, is happily describing her four shoe purchases to her friend Aurora.

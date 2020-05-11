@@ -12,13 +12,14 @@ Given that the shortest time to get them all across is 17 minutes total, how sho
 /*
 We describe the problem as Nodes in a graph and the solution means to find a path from
 the initial node to the final node.
-assume the names of the four people are: a,b,c,d
+Assume the names of the four people are: a,b,c,d
 state = node is graph
 state = [Time,Flash_place,[a,b,c,d],[]]
 Bank can be left (l) or right (r).  Thus Flash_place is l or r.
 [5,l,[a,b,c],[d]] - means 5 minutes passed and a,b,c are on the left bank and d is on the right
-| ?- start,fail.
-Found sol=[17,r,[],[a,b,c,d]]
+| ?- start,false.
+Found sol =
+[17,r,[],[a,b,c,d]]
 [15,l,[a,b],[c,d]]
 [14,r,[b],[c,d,a]]
 [4,l,[b,c,d],[a]]
@@ -29,26 +30,27 @@ no
 start :-
 	initial(S),
 	path(S,[],Sol),
-	write('Found sol='),
+	write('Found sol ='), nl,
 	forall(
 		member(X,Sol),
 		(write(X), nl)
 	).
-/* finding a path in a graph from initial node to final node */
+
+% Finding a path in a graph from initial node to final node
 path(N,P,[N|P]) :- final(N).
 path(N,P,Sol) :-
 	arc(N,N1),
 	not(member(N1,P)),
 	path(N1,[N|P],Sol).
-/* at the beginning All are on the same bank and Time=0 */
+% At the beginning All are on the same bank and Time=0
 initial([0,l,[a,b,c,d],[]]).
-/* at the end they have all to be on the other bank and Time=17*/
+% At the end they have all to be on the other bank and Time=17
 final([17,r,[],[a,b,c,d]]).
-/* opposite bank. */
+% Opposite bank.
 opp(l,r).  opp(r,l).
-/* time for crossing the bridge - time is a system predicate */
+% Time for crossing the bridge - time is a system predicate
 tim(a,1).  tim(b,2).  tim(c,5).  tim(d,10).
-/* define the arcs (or move conditions from a state node) to another state(node) */
+% Define the arcs (or move conditions from a state node) to another state(node)
 arc([T1,F1,L1,R1], [T2,F2,L2,R2]) :-
 	opp(F1,F2),
 	((F1=l,cross(X,L1),
@@ -57,16 +59,16 @@ arc([T1,F1,L1,R1], [T2,F2,L2,R2]) :-
 	  take(X,R1,R2), append(X,L1,L2), findtime(X,T), T2 is T1+T)),
 	T2 < 18.
 
-/* remove all elements in S from L result is in R */
+% Remove all elements in S from L result is in R
 take(S,L,R) :-
 	findall(Z, (member(Z,L), not(member(Z,S))), R).
 
-/* we know just one or two persons cross the bridge */
+% We know just one or two persons cross the bridge
 findtime([X],Tim) :- tim(X,Tim), !.
 findtime([A,B],Tim) :-
 	tim(A,Ta), tim(B,Tb), Tim is max(Ta,Tb), !.
 
-/* take all the combinations of 1 person, and 2 persons from our group: [a,b,c,d] */
+% Take all the combinations of 1 person, and 2 persons from our group: [a,b,c,d]
 cross(X,L) :-
 	comb(1,L,X);
 	comb(2,L,X).
@@ -75,7 +77,7 @@ cross(X,L) :-
 	?- mem1([X,Y],[a,b,c]).
 	[a,b][a,c][b,c]
 */
-mem1([],Y).
+mem1([],_).
 mem1([H|T],Y) :-
 	member(H,Y),
 	rest(H,Y,New),

@@ -38,7 +38,7 @@ They cannot align side by side, ups and downs or diagonally.
 	2
 ******************************************************/
 start :-
-	S=[A,B,C,D,E,F,G,H],
+	S=[_,_,_,_,_,_,_,_],
 	permutation([1,2,3,4,5,6,7,8],S),
 	shape(S),
 	write_square(S).

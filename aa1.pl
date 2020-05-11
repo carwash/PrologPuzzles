@@ -17,8 +17,8 @@ Bike contest= [dan,corey,sandy,andrew]
 *****************************************************/
 start :-
 	sol(S,B),
-	write('Swimming contest='), write(S),nl,
-	write('Bike contest= '),    write(B),nl.
+	write('Swimming contest = '), write(S), nl,
+	write('Bike contest = '),     write(B), nl.
 
 sol(Swim,Bike) :-
 	St = [sandy,andrew,corey,dan],

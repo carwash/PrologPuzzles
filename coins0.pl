@@ -1,9 +1,9 @@
 /*  File: coins0.pl  Author: Mihaela Malita
 Give us sum and transform it in coins. US coins are:
-1 Quater = 25 cents
-1 Dime   = 10 cents
-1 Niquel = 5 cents
-1 Penny  = 1 cent
+1 Quarter = 25 cents
+1 Dime    = 10 cents
+1 Nickel  = 5 cents
+1 Penny   = 1 cent
 
 ?- start.
 Transform in coins. What sum? 86.
@@ -15,11 +15,11 @@ Continue(y/n)? n.
 ***************************************************/
 coins(S) :-
 	possible([S,Q,D,N,P]),
-	write('Sum='), write(S), tab(3),
-	write('Q='),   write(Q), tab(3),
-	write('D='),   write(D), tab(3),
-	write('N='),   write(N), tab(3),
-	write('P='),   write(P), tab(3).
+	write('Sum = '), write(S), tab(3),
+	write('Q = '),   write(Q), tab(3),
+	write('D = '),   write(D), tab(3),
+	write('N = '),   write(N), tab(3),
+	write('P = '),   write(P), tab(3).
 
 possible([S,Q,D,N,P]) :-
 	between(0,4,P),
@@ -29,7 +29,7 @@ possible([S,Q,D,N,P]) :-
 	S is Q * 25 + D * 10 + N * 5 + P.
 
 start :-
-	write('Transform in coins. What sum?'),
+	write('Transform in coins. What sum? '),
 	read(S),
 	coins(S),
 	yes_or_no.
