@@ -1,15 +1,15 @@
 /*  File: soccer.pl
     Title: 88. giant book of Mensa Mind challenges 2003 isbn 1-4027-1049-6
-Five soccer teams United, County, Rovers Albion and Thistle took part in a league tournament.
-Their colors were white,yellow,green and red blue. No teams were tied in the standings at the
+Five soccer teams United, County, Rovers, Albion, and Thistle took part in a league tournament.
+Their colors were white, yellow, green, red, and blue. No teams were tied in the standings at the
 end. From the following information determine for each team its captain, colors,
 and position in which it finished in the league.
-1. Rovers did not win the league, but finished higher than the 4th
+1. Rovers did not win the league, but finished higher than 4th
 2. Neither Albion nor the team in green finished in the top three.
 3. Evans captained the team in yellow.
 4. Cooke's team finished a head of County which was captained by Dixon.
 5. Allen's team finished second and Boyle's team finished last
-6. the team in white finished lower than both united and the team in blue but above Evan's team.
+6. The team in white finished lower than both United and the team in blue, but above Evans' team.
 7. Albion was not the green team and United was not the blue team.
 solution Team=[team,captain,color]
 S=[[united,cooke,red],[rovers,allen,blue],[county,dixon,white],[albion,evans,yellow],[thistle,boyle,green]]

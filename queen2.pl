@@ -3,7 +3,7 @@
 Is it possible to place eight queens on an empty chessboard so
 that no queen is attacking any other, i.e., no two queens are in the same row,
 the same column, or along the same diagonal?
-?- start(S),write(S),false.
+?- start(S),write(S),nl,false.
 [1/4,2/2,3/7,4/3,5/6,6/8,7/5,8/1]
 [1/4,2/7,3/5,4/2,5/6,6/1,7/3,8/8]
 
