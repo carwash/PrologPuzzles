@@ -26,7 +26,7 @@ Sol = [[Man, Animal, Cigarette, Drink, Color], [..],[..],[..],[..] ]
 [norwegian,fox,kool,water,yellow]
 [ukrainian,horse,chesterfield,tea,blue]
 [english,snake,winston,milk,red]
-[japonese,zebra,kent,coffee,green]
+[japanese,zebra,kent,coffee,green]
 [spanish,dog,lucky,juice,white]
 no
 */
@@ -46,7 +46,7 @@ start :-
 	near([_,_,chesterfield,_,_],[_,fox,_,_,_],Sol), % 11
 	near([_,_,kool,_,_],[_,horse,_,_,_], Sol), % 12
 	member([_,_,lucky,juice,_],Sol),    % 13
-	member([japonese,_,kent,_,_],Sol),  % 14
+	member([japanese,_,kent,_,_],Sol),  % 14
 	near([norwegian,_,_,_,_],[_,_,_,_,blue],Sol), % 15
 	member([_,_,_,water,_],Sol), % someone drinks water
 	member([_,zebra,_,_,_],Sol), % someone has a zebra
