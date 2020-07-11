@@ -22,6 +22,9 @@ I= [[lou,bear,tess,gipsy],[vince,batman,mary,snow_white],[matt,prince,sue,cat],
                                         second     third        last
 [[Man,Costume_man,Woman,Costume_woman],[_,_,_,_],[_,_,_,_],[_,_,_,_]]
 **********************************************************/
+
+:- encoding(utf8).
+
 boy([vince,chuck,lou,matt]).
 girl([sue,mary,ann,sue]).
 costume_boy([batman,donald_duck,prince,bear]).

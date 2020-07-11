@@ -17,6 +17,9 @@ Number of squares in the chess board? 3.
 [ (1, 1), (2, 3), (3, 1), (1, 2), (3, 3)]
 [ (1, 1), (3, 2), (1, 3), (2, 1), (3, 3)]
 *****************************************************/
+
+:- encoding(utf8).
+
 :- dynamic(final/1).
 initial((1,1)).  % knight starts from square (1,1)
 

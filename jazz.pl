@@ -17,6 +17,9 @@ Solution = [S1,R1,N1,S2,R2,N2]
 Sheila Ramon Niko Sheila Ramon Niko
 jazz  rock  jazz  jazz  rock  jazz
 ****************************************************/
+
+:- encoding(utf8).
+
 start :- find(Sol),
 		 mywrite(Sol), nl.
 mywrite(L) :-

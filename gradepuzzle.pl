@@ -22,6 +22,9 @@ Solution in Prolog.
 | ?- start(I).
 [[andrew,a,c,b],[bridget,d,a,e],[neil,e,b,a],[paul,c,e,d],[wendy,b,d,c]]
 ****************************************************************/
+
+:- encoding(utf8).
+
 % S= [[Name,Math,Chemistry,Physics],[Name,Math,Chemistry,Physics],..]
 grades([a,b,c,d,e]).
 start(S) :-

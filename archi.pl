@@ -18,6 +18,9 @@ Second, ecru espadrilles, Foot Farm
 Third, suede sandals, Tooties
 Fourth, fuchsia flats, Heels in a Handcart
 *******************************************************/
+
+:- encoding(utf8).
+
 start(S) :-
 	S = [[H1,T1],[H2,T2],[H3,T3],[H4,T4]],
 	Shoes = [pumps,espadrilles,sandals,flats],

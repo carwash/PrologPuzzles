@@ -27,6 +27,9 @@ Ex :-  ?- start,nl,false.
 [ro,da,ch,ad,ja,cr]
 [ro,da,ja,cr]
 */
+
+:- encoding(utf8).
+
 arc(cr,jo).  arc(cr,ja).
 arc(ja,ki).  arc(ja,ad).  arc(ja,da).
 arc(ad,sc).  arc(ad,je).

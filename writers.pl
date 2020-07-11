@@ -23,6 +23,9 @@ What kind of writer is  each person?
 Uses SWI:  nextto/3,
 nth1(?Index, ?List, ?Elem) Succeeds  when  the  Index-th element  of  List unifies  with  Elem. Counting starts at 1.
 ********************************************************/
+
+:- encoding(utf8).
+
 rez([[green,pamphlets,_],[black,novels,_],[white,poems,_],[yellow,theater,_],[blue,history,_],[red,essays,_]]).
 
 corner(I) :- member(I,[1,3,4,6]).

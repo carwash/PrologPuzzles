@@ -7,6 +7,9 @@ MONEY
 Solution is: [S,E,N,D,M,O,R,Y]=[9, 5, 6, 7, 1, 0, 8, 2],
 Assign different values 0-9 to all letters S,E,N,D,M,O,R,Y in such a way that the equation holds
 ***************************/
+
+:- encoding(utf8).
+
 start(Sol) :-
 	Sol = [S,E,N,D,M,O,R,Y],
 	between(1,9,S), between(0,9,E), between(0,9,N), between(0,9,D),

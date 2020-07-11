@@ -12,6 +12,9 @@ that is matrices which have the sum 1 on each row and each column, but only that
 does not include  (-1).
 Their number is known and easy to find. The number of the ASM of (n x n) was an open problem till '95.
 *****************************************************/
+
+:- encoding(utf8).
+
 start(S) :-
 	S=[1/Y1,2/Y2,3/Y3,4/Y4,5/Y5,6/Y6,7/Y7,8/Y8],
 	permutation([Y1,Y2,Y3,Y4,Y5,Y6,Y7,Y8],[1,2,3,4,5,6,7,8]),

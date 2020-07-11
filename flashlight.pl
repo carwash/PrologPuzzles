@@ -32,6 +32,9 @@ Found sol =
 [2,r,a(r),b(r),c(l),d(l)]
 [0,l,a(l),b(l),c(l),d(l)]
 */
+
+:- encoding(utf8).
+
 start :-
 	initial(S),
 	path(S,[],Sol),

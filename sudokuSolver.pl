@@ -5,6 +5,9 @@ all integers: 1-9 fill on lines and columns (no repeats)
 also blocks (9) do not repeat
 SWI predicates: permutation/2  and is_set/1
 **************************************************************/
+
+:- encoding(utf8).
+
 %% start :- write('Enter known positions?'),read(S),solve(S).
 
 start :-

@@ -13,6 +13,9 @@ L = [84, 117, 114, 105, 110, 103]
 ?- name(X,[100,101,102]).
 X = def
 *************************************************************/
+
+:- encoding(utf8).
+
 start :-
 	write('Write your name? '), read(X),
 	write('\nhere are the anagrams:\n'),

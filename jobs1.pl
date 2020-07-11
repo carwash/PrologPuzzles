@@ -12,6 +12,9 @@ and
 3) Smith's son is a baker.
 find the professions of the parents and sons.
 */
+
+:- encoding(utf8).
+
 professions([smith,baker,carpenter,tailor]). % list of professions
 /* S = Smith's profession                B = Baker's profession
    C = Carpenter's profession            T = Taylor's profession

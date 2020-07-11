@@ -32,6 +32,8 @@ Work in Progress!! Library for Logic Puzzles
 	write_list/1
 */
 
+:- encoding(utf8).
+
 % first(List,First).
 first(List,H) :- List=[H|_].
 

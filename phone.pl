@@ -5,6 +5,9 @@
     vowel(V) :- member(V,[97,101,105,111,117,121]).
     two_vowels(Word) :- name(Word,Lw),append(_,[V1,V2|_],Lw),vowel(V1),vowel(V2).
 */
+
+:- encoding(utf8).
+
 key(1,[1]).
 key(2,[a,b,c]).
 key(3,[d,e,f]).

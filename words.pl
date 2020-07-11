@@ -22,6 +22,9 @@ Algorithm:
 	wordsq(A,B,C,D,E,F,G,H,I).
 4) Write start. Look for all solutions.
 *****************************************************/
+
+:- encoding(utf8).
+
 /* data base with words */
 word([t,a,b]).  word([e,p,a]).
 word([b,a,t]).  word([t,e,n]).

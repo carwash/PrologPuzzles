@@ -15,6 +15,9 @@ What was the winning order in the swimming and bike contest?
 Swimming contest=[sandy,andrew,corey,dan]
 Bike contest= [dan,corey,sandy,andrew]
 *****************************************************/
+
+:- encoding(utf8).
+
 start :-
 	sol(S,B),
 	write('Swimming contest = '), write(S), nl,

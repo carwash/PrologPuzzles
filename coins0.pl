@@ -13,6 +13,9 @@ Transform in coins. What sum? 99.
 S=99   Q=3   D=2   N=0   P=4
 Continue(y/n)? n.
 ***************************************************/
+
+:- encoding(utf8).
+
 coins(S) :-
 	possible([S,Q,D,N,P]),
 	write('Sum = '), write(S), tab(3),

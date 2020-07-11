@@ -27,6 +27,9 @@ Found sol =
 [0,l,[a,b,c,d],[]]
 no
 */
+
+:- encoding(utf8).
+
 start :-
 	initial(S),
 	path(S,[],Sol),

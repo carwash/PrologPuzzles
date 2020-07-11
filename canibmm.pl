@@ -32,6 +32,9 @@ Boat Me Ce Mw Cw
 [e, 0, 2, 3, 1]
 [w, 0, 0, 3, 3]
 ****************************************************************/
+
+:- encoding(utf8).
+
 %% declare the initial state (node) and final state(node)
 initial([e,3,3,0,0]).
 final([w,0,0,3,3]).

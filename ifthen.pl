@@ -9,6 +9,9 @@ Which if any is true?
 ?- start.
 I = [false,false,false,true,false] ;
 */
+
+:- encoding(utf8).
+
 start :- find(I), write(I).
 /* mem/2: tests/generates if all the elements in the first list are
    members in the second list.

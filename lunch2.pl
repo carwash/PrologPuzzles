@@ -35,6 +35,8 @@ Order is not important in this example. That is why we write
 Child = [C1,C2,C3,C4], otherwise we get all combinations.
 */
 
+:- encoding(utf8).
+
 start(Sol) :-
 	Dessert = [candy_bar,cupcake,cookie,brownie],
 	Fruit   = [grapes,orange,apple,banana],

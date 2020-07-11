@@ -15,6 +15,9 @@ USES SWI:member/2, permutation/2
 [nora,grant,3]
 [otto,ivey,4]
 *********************************************/
+
+:- encoding(utf8).
+
 start(Sol) :-
 	F = [keith,libby,margo,nora,otto],
 	L = [fell,grant,hall,ivey,jule],

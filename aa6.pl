@@ -12,6 +12,9 @@ Solutions found with the program: ?- start(I).
 I = [[clark,ann,wine],[davidson,mary,cookie],
 [brown,rachel,coffee],[andrew,vivien,chocolate]] ;
 ****************************************************************/
+
+:- encoding(utf8).
+
 start(Final) :-
 	Final = [[_,_,wine],[_,_,cookie],[_,_,coffee],[_,_,_]],
 	member([andrew,_,chocolate],Final),

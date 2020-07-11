@@ -9,6 +9,9 @@ We describe the problem as Nodes in a graph and the solution means to find a pat
 	s(farmer(Bank),goat(Bank),cabbage(Bank),wolf(Bank)).
 	Bank can be East (e) or West (w).
 **********************************************/
+
+:- encoding(utf8).
+
 start :-
 	initial(S),
 	path(S,[],Sol),

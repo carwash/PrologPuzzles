@@ -19,6 +19,9 @@ state(s) = node is graph
 	[t, h, h]
 	[t, t, t]
 **********************************************/
+
+:- encoding(utf8).
+
 start :-
 	initial(S),
 	path(S,[],Sol),

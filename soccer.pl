@@ -14,6 +14,9 @@ and position in which it finished in the league.
 solution Team=[team,captain,color]
 S=[[united,cooke,red],[rovers,allen,blue],[county,dixon,white],[albion,evans,yellow],[thistle,boyle,green]]
 ************************************************************************************/
+
+:- encoding(utf8).
+
 start :-
 	S = [T1,T2,T3,T4,T5],
 	T1 = [H1,N1,C1],

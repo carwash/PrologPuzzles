@@ -30,6 +30,9 @@ Sol = [[Man, Animal, Cigarette, Drink, Color], [..],[..],[..],[..] ]
 [spanish,dog,lucky,juice,white]
 no
 */
+
+:- encoding(utf8).
+
 near(X,Y,L) :- nextto(X,Y,L) ; nextto(Y,X,L).
 
 start :-

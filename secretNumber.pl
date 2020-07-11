@@ -12,6 +12,9 @@ means one digit in common different place, B(Bingo) means one digit in common in
 ?- start(I).
 [3,7,1,9]
 *************************************************/
+
+:- encoding(utf8).
+
 start(S) :-
 	S = [X,Y,Z,W],   %% to check S=[3,7,1,9],
 	mem(S,[1,2,3,4,5,6,7,8,9]), is_set(S),
