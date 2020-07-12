@@ -1,6 +1,6 @@
 /* 	File: Puzzles/bibmm.pro Author: MMalita 
 Work in Progress!! Library for Logic Puzzles 	
-	SWI: append/3 member/2 intersection/3	permutations/2 	flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
+	SWI: append/3 member/2 intersection/3	permutation/2 	flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
 	all/3
 	all_prop(P,L): if all in a list have Property P/1  	
 	arrange/3 	
@@ -103,7 +103,7 @@ list_arrange(N,L,Res):- findall(X,arrange(N,L,X),Res).
 	R = 12
 */
 count_list_arrange(N,L,Many):- list_arrange(N,L,Res),length(Res,Many).
-list_permutations(L,R):-findall(X,permutations(L,X),Res).
+list_permutations(L,R):-findall(X,permutation(L,X),Res).
 /* count_list_permutations(L,N). N=length(L)!*/
 count_list_permutations(L,N):-list_permutations(L,R),length(R,N).
 
