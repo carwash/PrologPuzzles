@@ -24,6 +24,7 @@ Magic Square 3x3
 **************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	S=[A,B,C,D,E,F,G,H,I],

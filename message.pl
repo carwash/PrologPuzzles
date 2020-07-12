@@ -29,6 +29,7 @@ Ex :-  ?- start,nl,false.
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 arc(cr,jo).  arc(cr,ja).
 arc(ja,ki).  arc(ja,ad).  arc(ja,da).

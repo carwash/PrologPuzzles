@@ -33,6 +33,7 @@ Work in Progress!! Library for Logic Puzzles
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 % first(List,First).
 first(List,H) :- List=[H|_].

@@ -14,6 +14,7 @@ I = [[clark,ann,wine],[davidson,mary,cookie],
 ****************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(Final) :-
 	Final = [[_,_,wine],[_,_,cookie],[_,_,coffee],[_,_,_]],

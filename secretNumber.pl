@@ -14,6 +14,7 @@ means one digit in common different place, B(Bingo) means one digit in common in
 *************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(S) :-
 	S = [X,Y,Z,W],   %% to check S=[3,7,1,9],

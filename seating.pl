@@ -17,6 +17,7 @@ N = 24
 ****************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start1(Sol) :-
 	Sol = [X,Y,Z,U,V],

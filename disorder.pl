@@ -39,6 +39,7 @@ They cannot align side by side, ups and downs or diagonally.
 ******************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	S=[_,_,_,_,_,_,_,_],

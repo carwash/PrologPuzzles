@@ -7,6 +7,7 @@
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 key(1,[1]).
 key(2,[a,b,c]).

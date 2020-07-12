@@ -19,8 +19,9 @@ Number of squares in the chess board? 3.
 *****************************************************/
 
 :- encoding(utf8).
-
+:- use_module(library(lists)).
 :- dynamic(final/1).
+
 initial((1,1)).  % knight starts from square (1,1)
 
 move((L1,C1),(L2,C2),N) :-

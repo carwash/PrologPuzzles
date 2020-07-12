@@ -16,6 +16,7 @@ SWI predicate: permutation/2  and is_set/1
 **************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	Nine = [1,2,3,4,5,6,7,8,9],

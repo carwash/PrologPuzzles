@@ -34,6 +34,7 @@ Found sol =
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	initial(S),

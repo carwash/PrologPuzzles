@@ -36,6 +36,7 @@ Child = [C1,C2,C3,C4], otherwise we get all combinations.
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(Sol) :-
 	Dessert = [candy_bar,cupcake,cookie,brownie],

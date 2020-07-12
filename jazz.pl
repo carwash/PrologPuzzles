@@ -19,6 +19,7 @@ jazz  rock  jazz  jazz  rock  jazz
 ****************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :- find(Sol),
 		 mywrite(Sol), nl.

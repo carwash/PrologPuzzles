@@ -9,6 +9,7 @@ Assign different values 0-9 to all letters S,E,N,D,M,O,R,Y in such a way that th
 ***************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(Sol) :-
 	Sol = [S,E,N,D,M,O,R,Y],

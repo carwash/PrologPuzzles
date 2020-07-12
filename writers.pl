@@ -25,6 +25,7 @@ nth1(?Index, ?List, ?Elem) Succeeds  when  the  Index-th element  of  List unifi
 ********************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 rez([[green,pamphlets,_],[black,novels,_],[white,poems,_],[yellow,theater,_],[blue,history,_],[red,essays,_]]).
 

@@ -28,6 +28,7 @@ Bank   AE CE AW CW
 ***********************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 initial([east,4,2,0,0]).
 final([west,0,0,4,2]).

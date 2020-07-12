@@ -32,6 +32,7 @@ no
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 near(X,Y,L) :- nextto(X,Y,L) ; nextto(Y,X,L).
 

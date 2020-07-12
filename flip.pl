@@ -21,6 +21,7 @@ state(s) = node is graph
 **********************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	initial(S),

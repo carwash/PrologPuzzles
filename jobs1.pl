@@ -14,6 +14,7 @@ find the professions of the parents and sons.
 */
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 professions([smith,baker,carpenter,tailor]). % list of professions
 /* S = Smith's profession                B = Baker's profession

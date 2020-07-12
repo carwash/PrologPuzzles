@@ -17,6 +17,7 @@ Bike contest= [dan,corey,sandy,andrew]
 *****************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	sol(S,B),

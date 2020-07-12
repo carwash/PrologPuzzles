@@ -17,6 +17,7 @@ USES SWI:member/2, permutation/2
 *********************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(Sol) :-
 	F = [keith,libby,margo,nora,otto],

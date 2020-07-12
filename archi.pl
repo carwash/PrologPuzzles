@@ -20,6 +20,7 @@ Fourth, fuchsia flats, Heels in a Handcart
 *******************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(S) :-
 	S = [[H1,T1],[H2,T2],[H3,T3],[H4,T4]],

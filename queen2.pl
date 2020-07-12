@@ -14,6 +14,7 @@ Their number is known and easy to find. The number of the ASM of (n x n) was an 
 *****************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(S) :-
 	S=[1/Y1,2/Y2,3/Y3,4/Y4,5/Y5,6/Y6,7/Y7,8/Y8],

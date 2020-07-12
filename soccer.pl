@@ -16,6 +16,7 @@ S=[[united,cooke,red],[rovers,allen,blue],[county,dixon,white],[albion,evans,yel
 ************************************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	S = [T1,T2,T3,T4,T5],

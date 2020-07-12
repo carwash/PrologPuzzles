@@ -34,6 +34,7 @@ Boat Me Ce Mw Cw
 ****************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 %% declare the initial state (node) and final state(node)
 initial([e,3,3,0,0]).

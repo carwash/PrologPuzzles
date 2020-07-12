@@ -24,6 +24,7 @@ Solution in Prolog.
 ****************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 % S= [[Name,Math,Chemistry,Physics],[Name,Math,Chemistry,Physics],..]
 grades([a,b,c,d,e]).

@@ -7,6 +7,7 @@ SWI predicates: permutation/2  and is_set/1
 **************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 %% start :- write('Enter known positions?'),read(S),solve(S).
 

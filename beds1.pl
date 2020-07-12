@@ -23,6 +23,7 @@ I = [[haley,blue],[reeva,red],[kayla,black],[beth,yellow],[liza,brown],[zoe,gree
 *************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start(Sol) :-
 	Sol = [[N1,C1],[N2,C2],[kayla,C3],[N4,C4],[N5,C5],[N6,C6]], % 1

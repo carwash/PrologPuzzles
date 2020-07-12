@@ -24,6 +24,7 @@ I= [[lou,bear,tess,gipsy],[vince,batman,mary,snow_white],[matt,prince,sue,cat],
 **********************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 boy([vince,chuck,lou,matt]).
 girl([sue,mary,ann,sue]).

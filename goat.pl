@@ -11,6 +11,7 @@ We describe the problem as Nodes in a graph and the solution means to find a pat
 **********************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	initial(S),

@@ -15,6 +15,7 @@ X = def
 *************************************************************/
 
 :- encoding(utf8).
+:- use_module(library(lists)).
 
 start :-
 	write('Write your name? '), read(X),

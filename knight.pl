@@ -1,4 +1,5 @@
 :- encoding(utf8).
+:- use_module(library(lists)).
 /*  File: knight.pl
     Title: Knight’s Tour 3x3 board  Luger: page 650.
 Can the chess piece called horse/knight move around an empty
