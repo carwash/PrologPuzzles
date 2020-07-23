@@ -191,4 +191,4 @@ neighbor(X,Y,X1,Y1,S):- ((X1 is X+1, Y=Y1);
 /*  	Chessboard (any SIZE!). Are on a the same diagonal. */
 diagonal(X/Y,X1/Y1):-   A is abs(X-X1),A is abs(Y-Y1). 
 /*	Not on the same diagonal*/
-not_diagonal([X/Y,X1/Y1]):- A is abs(X-X1),B is abs(Y-Y1),A \= B.
+not_diagonal(X/Y,X1/Y1):- A is abs(X-X1),B is abs(Y-Y1),A \= B.
