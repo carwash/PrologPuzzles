@@ -31,7 +31,36 @@ Work in Progress!! Library for Logic Puzzles
 	sum/2       SWI: sumlist/2
 	write_list/1
 */
-
+:- module(bibmm, [
+	first/2,
+	generate_sol/2,
+	write_list/1,
+	count/3,
+	count_prop/3,
+	all_prop/2,
+	mem/2,
+	all/3,
+	list_all/3,
+	count_list_all/3,
+	arrange/3,
+	no_duplicates/1,
+	alldifferent/1,
+	list_arrange/3,
+	count_list_arrange/3,
+	list_permutations/2,
+	count_list_permutations/2,
+	mem1/2,
+	rest/3,
+	comb/3,
+	list_comb/3,
+	count_list_comb/3,
+	right/3,
+	next/3,
+	neighbor/5,
+	neighbour/5,
+	diagonal/2,
+	not_diagonal/2
+]).
 :- encoding(utf8).
 :- use_module(library(lists)).
 
