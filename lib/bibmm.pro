@@ -49,7 +49,7 @@ count(A,[_|L],N):- count(A,L,N).
 	?- count_prop(atomic,[b,[a,c],d,a],N).
 	N = 3
 */
-count_prop(P,[],0).
+count_prop(_P,[],0).
 count_prop(P,[A|L],N):- F=..[P,A],call(F),count_prop(P,L,N1),N is N1+1,!.
 count_prop(P,[_|L],N):- count_prop(P,L,N).
 /* all_prop(P,L). All elements from a list (first level) have property Prop. EX: check if all are integres in a list 
@@ -57,7 +57,7 @@ count_prop(P,[_|L],N):- count_prop(P,L,N).
 P = integer,
 L = [1, 2, 3].
 */
-all_prop(P,[]).
+all_prop(_P,[]).
 all_prop(P,[H|T]):- F=..[P,H],call(F),all_prop(P,T),!.
 /* same as:
 all_prop(P,L):-forall(member(X,L),(F=..[P,X],call(F))).
@@ -68,7 +68,7 @@ all_prop(P,L):-forall(member(X,L),(F=..[P,X],call(F))).
 	X = Y = b ;	X = b ,Y = c ;	X = c ,Y = a ;	X = c ,Y = b ;
 	X = Y = c ;
 */
-mem([],Y).
+mem([],_Y).
 mem([H|T],Y):-member(H,Y),mem(T,Y).
 /* all(N,L,X). All possible N-length lists with elements from [a,b,c,d]:
 	| ?- all(2,[a,b,c],I).
@@ -92,7 +92,7 @@ count_list_all(N,L,Many):-findall(X,all(N,L,X),Res),length(Res,Many).
 */
 arrange(N,L,X):-length(X,N),mem(X,L),is_set(X).
 no_duplicates(M):- is_set(M).
-alldifferent(M):-  is_set(L).
+alldifferent(M):-  is_set(M).
 /* list_arrange(N,L,Res). 
 	?- list_arange(2,[a,b,c,d],R).
 	R = [[a,b],[a,c],[a,d],[b,a],[b,c],[b,d],[c,a],[c,b],[c,d],[d,a],[d,b],[d,c]]
@@ -103,7 +103,7 @@ list_arrange(N,L,Res):- findall(X,arrange(N,L,X),Res).
 	R = 12
 */
 count_list_arrange(N,L,Many):- list_arrange(N,L,Res),length(Res,Many).
-list_permutations(L,R):-findall(X,permutation(L,X),Res).
+list_permutations(L,Res):-findall(X,permutation(L,X),Res).
 /* count_list_permutations(L,N). N=length(L)!*/
 count_list_permutations(L,N):-list_permutations(L,R),length(R,N).
 
@@ -111,7 +111,7 @@ count_list_permutations(L,N):-list_permutations(L,R),length(R,N).
 	?- mem1([X,Y],[a,b,c]),write([X,Y]),false.
 	[a,b][a,c][b,a][b,c][c,a][c,b]no
 */
-mem1([],Y).
+mem1([],_Y).
 mem1([H|T],Y):-member(H,Y),rest(H,Y,New),mem1(T,New).
 /* rest(A,L,R). For comb/3. Returns the rest of the list after the first occurrence of A. 
 	| ?- rest(a,[a,b,c,d],I).	I = [b,c,d]
@@ -122,7 +122,7 @@ rest(X,[X|T],T):-!.
 rest(X,[_|T],R):-rest(X,T,R).
 */
 %%same as
-rest(A,L,R):-Y=[A|R],append(X,Y,L),!.
+rest(A,L,R):-Y=[A|R],append(_X,Y,L),!.
 /* comb(N,L,Res). Combinations. Arrangements without " order".	
 	| ?- comb(2,[a,b,c],I).
 	I = [a,b] ;	I = [a,c] ;	I = [b,c] ;
