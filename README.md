@@ -41,8 +41,7 @@ Puzzles inspired by:
 1. `moremoney.pl` – Send More Money
 1. `words.pl` – Word Squares
 1. `coins0.pl` – Coins
-1. `sudoku.pl` – Sudoku Generator
-1. `sudokuSolver.pl` – Sudoku Solver
+1. `sudoku.pl` – Sudoku Solver and Generator
 1. `disorder.pl` – Disorder
 1. `secretNumber.pl` – Secret Number
 1. `soccer.pl` – Soccer
