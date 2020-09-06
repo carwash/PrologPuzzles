@@ -59,7 +59,7 @@ write_square(S) :-
 /* two lines are different:
 	if they do not have any elements on the same position.
 ?- different([a,b],[b,a]).
-trur
+true
 ?- different([a,b],[a,a]).
 false
 ************************************************/
