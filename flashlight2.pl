@@ -21,6 +21,13 @@ Bank can be left (l) or right (r).  Thus Flash_place is l or r.
 Found sol =
 [17,r,[],[a,b,c,d]]
 [15,l,[a,b],[c,d]]
+[13,r,[a],[c,d,b]]
+[3,l,[a,c,d],[b]]
+[2,r,[c,d],[a,b]]
+[0,l,[a,b,c,d],[]]
+Found sol =
+[17,r,[],[a,b,c,d]]
+[15,l,[a,b],[c,d]]
 [14,r,[b],[c,d,a]]
 [4,l,[b,c,d],[a]]
 [2,r,[c,d],[a,b]]
@@ -57,10 +64,11 @@ tim(a,1).  tim(b,2).  tim(c,5).  tim(d,10).
 % Define the arcs (or move conditions from a state node) to another state(node)
 arc([T1,F1,L1,R1], [T2,F2,L2,R2]) :-
 	opp(F1,F2),
-	((F1=l,cross(X,L1),
-	  take(X,L1,L2), append(X,R1,R2), findtime(X,T), T2 is T1+T);
+	((F1=l, cross(X,L1),
+	  take(X,L1,L2u), append(X,R1,R2), findtime(X,T), T2 is T1+T);
 	 (F1=r, cross(X,R1),
-	  take(X,R1,R2), append(X,L1,L2), findtime(X,T), T2 is T1+T)),
+	  take(X,R1,R2), append(X,L1,L2u), findtime(X,T), T2 is T1+T)),
+	msort(L2u,L2),
 	T2 < 18.
 
 % Remove all elements in S from L result is in R
