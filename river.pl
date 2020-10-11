@@ -35,7 +35,7 @@ final([west,0,0,4,2]).
 
 start :-
 	initial(S),
-	path(S, [], Sol),
+	path(S,[],Sol),
 	reverse(Sol,Res),
 	mywrite(Res).
 
@@ -58,11 +58,11 @@ move([west, Ae1, Ke1, Aw1, Kw1], [east, Ae2, Ke2, Aw2, Kw2]) :-
 	Aw2 is Aw1 - A,
 	Kw2 is Kw1 - K.
 
-path(N, Path, [N|Path]) :- final(N).
-path(N, Path, Sol) :-
-	move(N, NI),
-	not(member(NI, Path)),
-	path(NI, [N|Path], Sol).
+path(Node,Path,[Node|Path]) :- final(Node).
+path(Node,Path,Sol) :-
+	move(Node,N1),
+	not(member(N1,Path)),
+	path(N1,[Node|Path],Sol).
 
 mywrite(L) :-
 	write('Bank AE CE AW CW'), nl,

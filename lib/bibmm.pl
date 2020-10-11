@@ -77,11 +77,10 @@ write_list(L) :- forall(member(X,L),(write(X),nl)).
 	?- count(a,[b,a,c,d,a],N).
 	N = 2
 */
-count(_,[],0).
+count(_A,[],0).
 count(A,[A|L],N) :-
 	count(A,L,N1),
-	N is N1+1,
-	!.
+	N is N1 + 1, !.
 count(A,[_|L],N) :- count(A,L,N).
 
 /* count_prop(P,L,N). Count elements with a certain property
@@ -95,11 +94,10 @@ count_prop(P,[A|L],N) :-
 	F=..[P,A],
 	call(F),
 	count_prop(P,L,N1),
-	N is N1+1,
-	!.
+	N is N1+1, !.
 count_prop(P,[_|L],N) :- count_prop(P,L,N).
 
-/* all_prop(P,L). All elements from a list (first level) have property Prop. EX: check if all are integres in a list
+/* all_prop(P,L). All elements from a list (first level) have property Prop. EX: check if all are integers in a list
 ?- P=integer,L=[1,2,3],forall(member(X,L),(F=..[P,X],call(F))).
 P = integer,
 L = [1, 2, 3].
@@ -108,19 +106,27 @@ all_prop(P,[]).
 all_prop(P,[H|T]) :-
 	F=..[P,H],
 	call(F),
-	all_prop(P,T),
-	!.
+	all_prop(P,T), !.
 /* same as:
-	all_prop(P,L) :- forall(member(X,L), (F=..[P,X],call(F))).
+all_prop(P,L) :-
+	forall(
+		member(X,L),
+		(F=..[P,X], call(F))
+	).
 */
 
 /* mem(Lr,L). Elements from Lr are all members in L.
+   Or: Fill an empty list with elements from another list.
 	?- mem([X,Y],[a,b,c]).
 	X = Y = a ; X = a, Y = b ; X = a, Y = c ; X = b, Y = a ;
 	X = Y = b ; X = b, Y = c ; X = c, Y = a ; X = c, Y = b ;
 	X = Y = c ;
+	?- length(S,2), mem(S,[a,b,c]).
+	S = [a,a] ; S = [a,b] ; S = [a,c] ; S = [b,a] ;
+	S = [b,b] ; S = [b,c] ; S = [c,a] ; S = [c,b] ;
+	S = [c,c].
 */
-mem([],Y).
+mem([],_Y).
 mem([H|T],Y) :-
 	member(H,Y),
 	mem(T,Y).
@@ -183,9 +189,10 @@ count_list_permutations(L,N) :-
 
 /* mem1(Lr,L). For comb/3. Same as mem/2 but does not generate [a,b] and [b,a].
 	?- mem1([X,Y],[a,b,c]),write([X,Y]),false.
-	[a,b][a,c][b,a][b,c][c,a][c,b]no
+	[a,b][a,c][b,c]
+	no
 */
-mem1([],Y).
+mem1([],_Y).
 mem1([H|T],Y) :-
 	member(H,Y),
 	rest(H,Y,New),
@@ -200,12 +207,9 @@ rest(X,[X|T],T) :- !.
 rest(X,[_|T],R) :- rest(X,T,R).
 */
 % same as
-rest(A,L,R) :-
-	Y=[A|R],
-	append(X,Y,L),
-	!.
+rest(A,L,R) :- append(_,[A|R],L), !.
 
-/* comb(N,L,Res). Combinations. Arrangements without " order".
+/* comb(N,L,Res). Combinations. Arrangements without "order".
 	| ?- comb(2,[a,b,c],I).
 	I = [a,b] ; I = [a,c] ; I = [b,c] ;
 */
@@ -217,7 +221,7 @@ comb(N,L,X) :-
 	?- list_comb(2,[a,b,c,d],L).
 	L = [[a,b],[a,c],[a,d],[b,c],[b,d],[c,d]]
 */
-list_comb(N,L,Res) :- findall(X,comb(N,L,X),Res).
+list_comb(N,L,Res) :- findall(X, comb(N,L,X), Res).
 
 /* count_list_comb(N,L,Many). Formula is: C(k,n) = n!/ k! (n-k)!
 	or Pascal's formula: C(k,n)=C(k,n-1) + C(k-1,n-1)

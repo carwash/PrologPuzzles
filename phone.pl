@@ -48,8 +48,7 @@ has_vowels([],0).
 has_vowels([H|T],N) :-
 	vowel(H),
 	has_vowels(T,K),
-	N is K+1,
-	!.
+	N is K+1, !.
 has_vowels([_|T],N) :- has_vowels(T,N).
 
 start :-

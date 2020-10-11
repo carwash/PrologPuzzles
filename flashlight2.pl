@@ -48,11 +48,11 @@ start :-
 	).
 
 % Finding a path in a graph from initial node to final node
-path(N,P,[N|P]) :- final(N).
-path(N,P,Sol) :-
-	arc(N,N1),
-	not(member(N1,P)),
-	path(N1,[N|P],Sol).
+path(Node,Path,[Node|Path]) :- final(Node).
+path(Node,Path,Sol) :-
+	arc(Node,N1),
+	not(member(N1,Path)),
+	path(N1,[Node|Path],Sol).
 % At the beginning All are on the same bank and Time=0
 initial([0,l,[a,b,c,d],[]]).
 % At the end they have all to be on the other bank and Time=17
@@ -86,17 +86,23 @@ cross(X,L) :-
 	comb(2,L,X).
 
 /* mem1(Lr,L). For comb/3. Same as mem/2 but does not generate [a,b] and [b,a].
-	?- mem1([X,Y],[a,b,c]).
+	?- mem1([X,Y],[a,b,c]),write([X,Y]),false.
 	[a,b][a,c][b,c]
+	no
 */
-mem1([],_).
+mem1([],_Y).
 mem1([H|T],Y) :-
 	member(H,Y),
 	rest(H,Y,New),
 	mem1(T,New).
 
+/* rest(A,L,R). Returns the rest of the list after the first occurrence of A.
+	| ?- rest(a,[a,b,c,d],I).  I = [b,c,d]
+	| ?- rest(a,[b,c,d],I).    I = []
+*/
 rest(A,L,R) :- append(_,[A|R],L), !.
-/* comb(N,L,Res). Combinations. Arrangements without " order".
+
+/* comb(N,L,Res). Combinations. Arrangements without "order".
 	| ?- comb(2,[a,b,c],I).
 	I = [a,b] ; I = [a,c] ; I = [b,c] ;
 */

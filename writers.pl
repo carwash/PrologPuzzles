@@ -31,7 +31,7 @@ rez([[green,pamphlets,_],[black,novels,_],[white,poems,_],[yellow,theater,_],[bl
 
 corner(I) :- member(I,[1,3,4,6]).
 vis_a_vis(I,J) :- 3 is abs(I-J).  %% I is J+3 ; J is I+3.
-near(X,Y,L) :- nextto(X,Y,L) ; nextto(Y,X,L).
+next(X,Y,L) :- nextto(X,Y,L) ; nextto(Y,X,L).
 
 start(S) :-
 	S = [[X1,W1,R1],[X2,W2,R2],[X3,W3,R3],[X4,W4,R4],[X5,W5,R5],[X6,W6,R6]],
@@ -42,7 +42,7 @@ start(S) :-
 	%% 3. Mr. Yellow sits between the essay guy and pamphlet guy.
 	(S = [[_,essays,_],[yellow,_,_],[_,pamphlets,_],_,_,_] ;
 	 S = [_,_,_,[_,essays,_],[yellow,_,_],[_,pamphlets,_]]),
-	near([red,_,_],[_,theater,_],S), %% 4. Mr. Red sits near the playwriter.
+	next([red,_,_],[_,theater,_],S), %% 4. Mr. Red sits near the playwriter.
 	%% 9. Mr. Green sits in front of the novelist.
 	nth1(Ng,S,[green,_,_]),
 	nth1(Nn,S,[_,novels,_]),

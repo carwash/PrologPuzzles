@@ -14,22 +14,13 @@ I = [false,false,false,true,false] ;
 :- use_module(library(lists)).
 
 start :- find(I), write(I).
-/* mem/2: tests/generates if all the elements in the first list are
-   members in the second list.
-| ?- mem([X,Y,Z],[a,b]).
-X = Y = Z = a ;
-X = Y = a ,Z = b ;
-X = Z = a ,Y = b ;
-X = a ,Y = Z = b ;
-X = b ,Y = Z = a ;
-X = Z = b ,Y = a ;
-X = Y = b ,Z = a ;
-X = Y = Z = b ;    % There are 2^3 = 8 solutions.
+/* mem(Lr,L). Elements from Lr are all members in L.
+   Or: Fill an empty list with elements from another list.
 */
-mem([],L).
-mem([H|T],L) :-
-	member(H,L),
-	mem(T,L).
+mem([],_Y).
+mem([H|T],Y) :-
+	member(H,Y),
+	mem(T,Y).
 
 find([A1,A2,A3,A4,A5]) :-
 	mem([A1,A2,A3,A4,A5],[true,false]),
@@ -41,10 +32,12 @@ find([A1,A2,A3,A4,A5]) :-
 	((A4 -> N=4 ) ; (not A4 -> not N=4)),
 	((A5 -> N=5 ) ; (not A5 -> not N=5)).
 
-/* counts how many times an element (A) occurs in a list (first level)
-?- count(b,[a,b,c,b],N).
-N=2
+/* count(A,L,N). Counts occurrences
+	?- count(a,[b,a,c,d,a],N).
+	N = 2
 */
-count(A,[],0).
-count(A,[A|T],N) :- count(A,T,N1), N is N1+1, !.
-count(A,[_|T],N) :- count(A,T,N).
+count(_A,[],0).
+count(A,[A|L],N) :-
+	count(A,L,N1),
+	N is N1 + 1, !.
+count(A,[_|L],N) :- count(A,L,N).

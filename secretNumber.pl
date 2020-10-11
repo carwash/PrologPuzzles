@@ -37,7 +37,10 @@ samePlace([],[],[]).
 samePlace([H|T1],[H|T2],[H|R]) :- samePlace(T1,T2,R).
 samePlace([_|T1],[_|T2],R) :- samePlace(T1,T2,R).
 
-mem([],L).
-mem([H|T],L) :-
-	member(H,L),
-	mem(T,L).
+/* mem(Lr,L). Elements from Lr are all members in L.
+   Or: Fill an empty list with elements from another list.
+*/
+mem([],_Y).
+mem([H|T],Y) :-
+	member(H,Y),
+	mem(T,Y).

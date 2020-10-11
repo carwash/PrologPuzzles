@@ -45,18 +45,11 @@ find(Sol) :- Sol =  [S1,R1,N1,S2,R2,N2],
 	(S1=jazz ; (S1=rock,N1=jazz) ) , %% if sheila picks jazz does not matter
 	(S2=jazz ; (S2=rock,N2=jazz)).   %% %% is sheila picks rock, Nick has jazz
 */
-/* Fill an empty list with elements from another list
-?- mem([X,Y,Z],[a,b]).
-X = a Y = a Z = a ;
-X = a Y = a Z = b ;
-X = a Y = b Z = a ;
-X = a Y = b Z = b ;
-X = b Y = a Z = a ;
-X = b Y = a Z = b ;
-X = b Y = b Z = a ;
-X = b Y = b Z = b ;
-**************************************/
-mem([],Y).
+
+/* mem(Lr,L). Elements from Lr are all members in L.
+   Or: Fill an empty list with elements from another list.
+*/
+mem([],_Y).
 mem([H|T],Y) :-
 	member(H,Y),
 	mem(T,Y).

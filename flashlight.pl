@@ -46,11 +46,11 @@ start :-
 	).
 
 % Finding a path in a graph from initial node to final node
-path(N,P,[N|P]) :- final(N).
-path(N,P,Sol) :-
-	arc(N,N1),
-	not(member(N1,P)),
-	path(N1,[N|P],Sol).
+path(Node,Path,[Node|Path]) :- final(Node).
+path(Node,Path,Sol) :-
+	arc(Node,N1),
+	not(member(N1,Path)),
+	path(N1,[Node|Path],Sol).
 
 initial([0,l,a(l),b(l),c(l),d(l)]). %% start l=left r=right
 final([17,r,a(r),b(r),c(r),d(r)]).  %% in the end all on the same side
