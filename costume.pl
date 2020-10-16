@@ -26,15 +26,15 @@ I= [[lou,bear,tess,gipsy],[vince,batman,mary,snow_white],[matt,prince,sue,cat],
 :- encoding(utf8).
 :- use_module(library(lists)).
 
-boy([vince,chuck,lou,matt]).
-girl([sue,mary,ann,sue]).
-costume_boy([batman,donald_duck,prince,bear]).
-costume_girl([witch,gipsy,cat,snow_white]).
+man([vince,chuck,lou,matt]).
+woman([sue,mary,ann,tess]).
+costume_man([batman,donald_duck,prince,bear]).
+costume_woman([witch,gipsy,cat,snow_white]).
 
 start(Sol) :-
-	boy(B), girl(W),
-	costume_boy(C), costume_girl(Cw),
-	Sol = [[M1,C1,W1,Cw1],[M2,C2,W2,Cw2],[M3,C3,W3,Cw3],[M4,C4,W4,Cw4]], % 1
+	man(M), woman(W),
+	costume_man(Cm), costume_woman(Cw),
+	Sol = [[M1,Cm1,W1,Cw1],[M2,Cm2,W2,Cw2],[M3,Cm3,W3,Cw3],[M4,Cm4,W4,Cw4]], % 1
 	member([matt,_,_,cat],Sol),                  % 2
 	Sol = [X1,X2,[matt,_,_,cat],_],              % 3
 	(member(bear,X1) ; member(bear,X2)),         % 3
@@ -44,11 +44,15 @@ start(Sol) :-
 	before([_,_,mary,_],[_,_,sue,_],Sol),        % 6
 	before([_,G1,_,gipsy],[_,A1,ann,_],Sol),     % 7
 	before([_,_,tess,_],[_,_,_,snow_white],Sol), % 8
-	permutation([M1,M2,M3,M4],B),
-	permutation([C1,C2,C3,C4],C),
-	permutation([W1,W2,W3,W4],G),
+	permutation([M1,M2,M3,M4],M),
+	permutation([Cm1,Cm2,Cm3,Cm4],Cm),
+	permutation([W1,W2,W3,W4],W),
 	permutation([Cw1,Cw2,Cw3,Cw4],Cw),
 	vince \== M1,  % 4
 	X \== sue,     % 5
 	G1 \== batman, % 7
 	A1 \== batman, !.
+
+before(X,Y,L) :-
+	append(_,[X|R],L),
+	member(Y,R).

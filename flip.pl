@@ -28,7 +28,7 @@ start :-
 	path(S,[],Sol),
 	reverse(Sol,Res),
 	length(Sol,4),
-	prettyprint(Res).
+	write_list(Res).
 
 %% at the beginning All are on the same bank
 initial([h,t,h]).
@@ -39,17 +39,16 @@ final([t,t,t]).
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	move(Node,N1),
-	not(member(N1,Path)),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 %%
 opp(h,t).
 opp(t,h).
 
-prettyprint(L) :-
-	forall(
-		member(X,L),
-		(write(X), nl)
-	).
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).
 
 move([A,B,C],[A1,B1,C]) :- opp(A,A1), opp(B,B1).  % first two coins
 move([A,B,C],[A1,B,C1]) :- opp(A,A1), opp(C,C1).  % two coins

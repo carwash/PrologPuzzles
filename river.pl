@@ -61,12 +61,11 @@ move([west, Ae1, Ke1, Aw1, Kw1], [east, Ae2, Ke2, Aw2, Kw2]) :-
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	move(Node,N1),
-	not(member(N1,Path)),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 
 mywrite(L) :-
 	write('Bank AE CE AW CW'), nl,
-	forall(
-		member(X,L),
-		(write(X), nl)
-	).
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

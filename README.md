@@ -32,9 +32,9 @@ Puzzles inspired by:
 1. `ifthen.pl` – The false statements
 1. `jazz.pl` – CD choice: jazz
 1. `jobs1.pl` – Four professions
-1. `knight.pl` – Knight’s Tour 3x3 board
+1. `knight.pl` – Knight’s Tour 3×3 board
 1. `knightN.pl` – Knight on a chessboard
-1. `lunch2.pl` –  The lunch problem
+1. `lunch2.pl` – The lunch problem
 1. `magic.pl` – Magic square
 1. `message.pl` – News propagation
 1. `moremoney.pl` – Send More Money

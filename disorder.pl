@@ -42,7 +42,7 @@ They cannot align side by side, ups and downs or diagonally.
 :- use_module(library(lists)).
 
 start :-
-	S=[_,_,_,_,_,_,_,_],
+	length(S,8),
 	permutation([1,2,3,4,5,6,7,8],S),
 	shape(S),
 	write_square(S).
@@ -50,11 +50,11 @@ start :-
 consec(X,Y) :- 1 is abs(X - Y).
 
 shape([A,B,C,D,E,F,G,H]) :-
-	not(consec(A,B)), not(consec(A,C)), not(consec(A,D)),
-	not(consec(B,C)), not(consec(B,E)), not(consec(B,F)),
-	not(consec(C,E)), not(consec(C,F)), not(consec(C,D)), not(consec(C,G)),
-	not(consec(D,G)), not(consec(D,F)), not(consec(E,F)), not(consec(E,H)),
-	not(consec(F,H)), not(consec(F,G)).
+	\+consec(A,B), \+consec(A,C), \+consec(A,D),
+	\+consec(B,C), \+consec(B,E), \+consec(B,F),
+	\+consec(C,E), \+consec(C,F), \+consec(C,D), \+consec(C,G),
+	\+consec(D,G), \+consec(D,F), \+consec(E,F), \+consec(E,H),
+	\+consec(F,H), \+consec(F,G).
 
 write_square([A,B,C,D,E,F,G,H]) :-
 	tab(5), write(A), nl,

@@ -17,7 +17,7 @@ start :-
 	initial(S),
 	path(S,[],Sol),
 	reverse(Sol,Res),
-	prettyprint(Res).
+	write_list(Res).
 
 %% at the beginning All are on the same bank
 initial(s(farmer(e),goat(e),cabbage(e),wolf(e))).
@@ -28,8 +28,8 @@ final(s(farmer(w),goat(w),cabbage(w),wolf(w))).
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	move(Node,N1),
-	not(bad(N1)),
-	not(member(N1,Path)),
+	\+bad(N1),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 
 %% opposite bank East is opposite to west Bank. opp/2
@@ -62,8 +62,7 @@ move(s(farmer(T), goat(G),cabbage(C),wolf(T)),
 move(s(farmer(T), goat(G),cabbage(C),wolf(W)),
      s(farmer(T1),goat(G),cabbage(C),wolf(W))) :- opp(T,T1).
 
-prettyprint(L) :-
-	forall(
-		member(X,L),
-		(write(X), nl)
-	).
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

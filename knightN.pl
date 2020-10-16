@@ -29,16 +29,16 @@ move((L1,C1),(L2,C2),N) :-
 	L2 is L1 + Dx, between(1,N,L2),
 	C2 is C1 + Dy, between(1,N,C2).
 
-path(N,Node,Path,Path) :- final(Node).
+path(_N,Node,Path,Path) :- final(Node).
 path(N,Node,Path,Sol) :-
 	move(Node,Node1,N),
-	not(member(Node1,Path)),
+	\+member(Node1,Path),
 	path(N,Node1,[Node1|Path],Sol).
 
 %% be careful: retract(final/1). %before your start once more
 start :-
 	write('Size of your board? '), read(N),
-	assert(final((N,N))),  %% the lower-right corner
+	assertz(final((N,N))),  %% the lower-right corner
 	initial(Start),
 	path(N,Start,[Start],Res),
 	reverse(Res,Sol),

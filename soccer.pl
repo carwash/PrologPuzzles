@@ -20,10 +20,10 @@ S=[[united,cooke,red],[rovers,allen,blue],[county,dixon,white],[albion,evans,yel
 
 start :-
 	S = [T1,T2,T3,T4,T5],
-	T1 = [H1,N1,C1],
+	T1 = [H1,_N1,C1],
 	T2 = [H2,allen,C2],
-	T3 = [H3,N3,C3],
-	T4 = [H4,N4,C4],
+	T3 = [H3,_N3,C3],
+	T4 = [H4,_N4,C4],
 	T5 = [H5,boyle,C5],
 	Colors = [yellow,red,blue,white,green],
 	Teams = [united,albion,rovers,thistle,county],
@@ -42,8 +42,13 @@ start :-
 	before([united,_,_],[_,_,white],S),       %6
 	before([_,_,blue],[_,_,white],S),         %6
 	before([_,_,white],[_,evans,_],S),        %6
-	forall(member(T,S),(write(T),nl)).        %6
+	write_list(S).
 
 before(X,Y,L) :-
 	append(_,[X|T],L),
 	member(Y,T).
+
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

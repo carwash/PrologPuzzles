@@ -15,7 +15,7 @@ Solution = [S1,R1,N1,S2,R2,N2]
 ?- start.
      SATURDAY           SUNDAY
 Sheila Ramon Niko Sheila Ramon Niko
-jazz  rock  jazz  jazz  rock  jazz
+jazz  rock  jazz  jazz  rock  rock
 ****************************************************/
 
 :- encoding(utf8).
@@ -23,28 +23,24 @@ jazz  rock  jazz  jazz  rock  jazz
 
 start :- find(Sol),
 		 mywrite(Sol), nl.
+
+find(Sol) :-
+	Sol =  [S1,R1,N1,S2,R2,N2],
+	mem(Sol,[jazz,rock]),
+	is_set([S1,R1]), %% 2. If Sheila picks rock, Niko picks jazz.
+	is_set([S2,R2]), %% that is different
+	[N1,R1]\=[jazz,jazz],          %% 3. Niko and Ramon do not both pick jazz
+	[N2,R2]\=[jazz,jazz],
+	(S1=jazz ; (S1=rock,N1=jazz)), %% if sheila picks jazz does not matter
+	(S2=jazz ; (S2=rock,N2=jazz)), %% if sheila picks rock, Nick has jazz
+	([S1,S2]=[jazz,rock] ; [R1,R2]=[jazz,rock] ; [N1,N2]=[jazz,rock]). %% at least one of them bought jazz on Saturday and rock on Sunday
+
 mywrite(L) :-
 	write('   SATURDAY           SUNDAY       '), nl,
 	write('Sheila Ramon Niko Sheila Ramon Niko'), nl,
-	forall(
-		member(X,L),
-		(write(X), write('  '))
-	).
-/*
-find(Sol) :- Sol =  [S1,R1,N1,S2,R2,N2],
-	member(S1,[jazz,rock]),
-	member(S2,[jazz,rock]),
-	member(N1,[jazz,rock]),
-	member(N2,[jazz,rock]),
-	member(R1,[jazz,rock]),
-	member(R2,[jazz,rock]),
-	is_set([S1,R1]), %% 2. If Sheila picks rock, Niko picks jazz.
-	is_set([S2,R2]), %% that is different
-	not([N1,R1]=[jazz,jazz]),        %% 3. Niko and Ramon do not both pick jazz.
-	not([N2,R2]=[jazz,jazz]),
-	(S1=jazz ; (S1=rock,N1=jazz) ) , %% if sheila picks jazz does not matter
-	(S2=jazz ; (S2=rock,N2=jazz)).   %% %% is sheila picks rock, Nick has jazz
-*/
+	forall(member(X,L),
+		   (write(X), write('  '))
+		  ).
 
 /* mem(Lr,L). Elements from Lr are all members in L.
    Or: Fill an empty list with elements from another list.
@@ -53,13 +49,3 @@ mem([],_Y).
 mem([H|T],Y) :-
 	member(H,Y),
 	mem(T,Y).
-
-find(Sol) :-
-	Sol =  [S1,R1,N1,S2,R2,N2],
-	mem(Sol,[jazz,rock]),
-	is_set([S1,R1]), %% 2. If Sheila picks rock, Niko picks jazz.
-	is_set([S2,R2]), %% that is different
-	not([N1,R1]=[jazz,jazz]),      %% 3. Niko and Ramon do not both pick jazz
-	not([N2,R2]=[jazz,jazz]),
-	(S1=jazz ; (S1=rock,N1=jazz)), %% if sheila picks jazz does not matter
-	(S2=jazz ; (S2=rock,N2=jazz)). %% if sheila picks rock, Nick has jazz

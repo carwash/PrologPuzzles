@@ -40,16 +40,13 @@ start :-
 	initial(S),
 	path(S,[],Sol),
 	write('Found sol ='), nl,
-	forall(
-		member(X,Sol),
-		(write(X), nl)
-	).
+	write_list(Sol).
 
 % Finding a path in a graph from initial node to final node
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	arc(Node,N1),
-	not(member(N1,Path)),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 
 initial([0,l,a(l),b(l),c(l),d(l)]). %% start l=left r=right
@@ -75,3 +72,8 @@ arc([T1,X,a(A1),b(B1),c(C1),d(D1)], [T2,Y,a(A2),b(B2),c(C2),d(D2)]) :-
 	 (X=B1,X=D1,A1=A2,C1=C2,B2=Y,D2=Y, tim(b,Tb), tim(d,Td), M is max(Tb,Td), T2 is T1+M);
 	 (X=C1,X=D1,A1=A2,B1=B2,C2=Y,D2=Y, tim(c,Tc), tim(d,Td), M is max(Tc,Td), T2 is T1+M)),
 	T2 < 18.
+
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

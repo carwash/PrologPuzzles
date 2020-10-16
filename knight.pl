@@ -26,7 +26,7 @@ true.
 ?- path(1,5).
 ERROR: Out of local stack
 path(Z,Z).
-path(X,Y) :- move(X,W),path(W,Y).
+path(X,Y) :- move(X,W), path(W,Y).
 ----------------------------------------------------------*/
 /* Solution 2. Keep track of visited nodes using a predicate
 called: visited(?Node)
@@ -36,9 +36,9 @@ Yes
 No
 :- dynamic visited/1.
 path(Z,Z).
-path(X,Y) :- move(X,W),not(visited(W)),assert(visited(W)),path(W,Y).
+path(X,Y) :- move(X,W), \+visited(W), assertz(visited(W)), path(W,Y).
 
-start :- retractall(visited(_)),path(1,9).
+start :- retractall(visited(_)), path(1,9).
 ----------------------------------------------------------*/
 /*Solution 3. Build the path in a list L
 ?- path(1,9,[1]).
@@ -46,7 +46,7 @@ true
 ?- path(1,5,[1]).
 false
 path(Z,Z,L).
-path(X,Y,L) :- move(X,W),not(member(W,L)),path(W,Y,[W|L]).
+path(X,Y,L) :- move(X,W), \+member(W,L), path(W,Y,[W|L]).
 ----------------------------------------------------------*/
 /*Solution 4. Build and display the path in a list L
 ?- path(1,5,[1],L).
@@ -59,7 +59,7 @@ L = [9, 2, 7, 6, 1] ;
 L = [9, 4, 3, 8, 1] ;
 
 path(Z,Z,L,L).
-path(X,Y,L,R) :- move(X,W),not(member(W,L)),path(W,Y,[W|L],R).
+path(X,Y,L,R) :- move(X,W), \+member(W,L), path(W,Y,[W|L],R).
 ---------------------------------------------------------*/
 /*Graph (nodes and arcs): path in a graph
 We interpret the move(Node1,Node2) as arc in a graph with Nodes 1-9.
@@ -77,12 +77,12 @@ final(9).    %% 9 is final node
 %% beginning with Start ending with the final Node.
 start :-
 	initial(Start),
-	path(Start,[Start],Sol),
+	path(Start,[],Sol),
 	reverse(Sol,Res),
 	write(Res).
 
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	move(Node,N1),
-	not(member(N1,Path)),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).

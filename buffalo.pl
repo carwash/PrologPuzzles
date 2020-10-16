@@ -7,8 +7,8 @@ Each weekday, Bonnie takes care of five of the neighbors' children. The children
    who is one year older than Nora.
 3. The Fell child is three years older than Margo.
 4. Otto is twice as many years old as the Hall child.
-USES SWI:member/2, permutation/2
-?- start(S),write_list(S),fail.
+USES SWI: member/2, permutation/2
+?- start(S), write_list(S), fail.
 [keith,fell,5]
 [libby,jule,6]
 [margo,hall,2]
@@ -31,9 +31,15 @@ start(Sol) :-
 	member([_,ivey,AgeI],Sol), AgeK is AgeI+1,
 	member([nora,_,AgeN],Sol), AgeI is AgeN+1,
 	member([margo,_,AgeM],Sol),
-	member([_,fell,AgeF],Sol), AgeF is 3+AgeM,
+	member([_,fell,AgeF],Sol), AgeF is AgeM+3, %3
 	member([otto,_,AgeO],Sol),
-	member([_,hall,AgeH],Sol).
+	member([_,hall,AgeH],Sol),
+	AgeO is AgeH*2. %4
+
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).
 
 /* There are two types of restrictions:
 a) positive ones- when you fill the Solution

@@ -113,9 +113,9 @@ comb(N,L,X) :-
 list_comb(N,L,Res) :- findall(X, comb(N,L,X), Res).
 
 /* all_prop(P,L). All elements from a list (first level) have property Prop. EX: check if all are integers in a list
-?- P=integer,L=[1,2,3],forall(member(X,L),(F=..[P,X],call(F))).
+?- P=integer, L=[1,2,3], forall(member(X,L), (F=..[P,X], call(F))).
 P = integer,
-L = [1, 2, 3].
+L = [1,2,3].
 */
 all_prop(_P,[]).
 all_prop(P,[H|T]) :-

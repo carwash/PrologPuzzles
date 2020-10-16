@@ -42,16 +42,13 @@ start :-
 	initial(S),
 	path(S,[],Sol),
 	write('Found sol ='), nl,
-	forall(
-		member(X,Sol),
-		(write(X), nl)
-	).
+	write_list(Sol).
 
 % Finding a path in a graph from initial node to final node
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	arc(Node,N1),
-	not(member(N1,Path)),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 % At the beginning All are on the same bank and Time=0
 initial([0,l,[a,b,c,d],[]]).
@@ -73,7 +70,7 @@ arc([T1,F1,L1,R1], [T2,F2,L2,R2]) :-
 
 % Remove all elements in S from L result is in R
 take(S,L,R) :-
-	findall(Z, (member(Z,L), not(member(Z,S))), R).
+	findall(Z, (member(Z,L), \+member(Z,S)), R).
 
 % We know just one or two persons cross the bridge
 findtime([X],Tim) :- tim(X,Tim), !.
@@ -109,3 +106,8 @@ rest(A,L,R) :- append(_,[A|R],L), !.
 comb(N,L,X) :-
 	length(X,N),
 	mem1(X,L).
+
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).

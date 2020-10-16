@@ -27,7 +27,7 @@ I = [[haley,blue],[reeva,red],[kayla,black],[beth,yellow],[liza,brown],[zoe,gree
 
 start(Sol) :-
 	Sol = [[N1,C1],[N2,C2],[kayla,C3],[N4,C4],[N5,C5],[N6,C6]], % 1
-	((N1=reeva,N2=haley); (N2=reeva,N1=haley)),
+	((N1=reeva, N2=haley); (N2=reeva, N1=haley)),
 	member(C1,[black,blue,brown]),                     % 2
 	member(C3,[black,blue,brown]),
 	member(C5,[black,blue,brown]),
@@ -38,4 +38,4 @@ start(Sol) :-
 	member([black,yellow],[[C1,C2],[C3,C4],[C5,C6]]),  % 9
 	member(green,[C1,C2,C3,C4,C5,C6]),
 	member([beth,C],Sol),member(C,[red,yellow,green]), % 3
-	not(N4=zoe).                                       % 7
+	N4\=zoe.                                           % 7

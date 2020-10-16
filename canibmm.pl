@@ -50,7 +50,7 @@ bad([_,M1,C1,M2,C2]) :-
 /* The problem is reduced to the pattern:
    find a path in a directed graph.
    The following predicates are almost the same as in graph theory.
-   We added the condition (not(bad(State) ).
+   We added the condition \+bad(State).
 */
 start :-
 	initial(S),
@@ -61,8 +61,8 @@ start :-
 path(Node,Path,[Node|Path]) :- final(Node).
 path(Node,Path,Sol) :-
 	move(Node,N1),
-	not(bad(N1)),
-	not(member(N1,Path)),
+	\+bad(N1),
+	\+member(N1,Path),
 	path(N1,[Node|Path],Sol).
 /* The art of solving the problem is to describe the arcs(edges).
    After you decided the representation for the states.

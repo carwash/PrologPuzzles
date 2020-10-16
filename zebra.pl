@@ -8,7 +8,7 @@ Who has a zebra and who drinks water?
  3) The Spanish has a dog.
  4) They drink coffee in the green house.
  5) The Ukrainian drinks tea.
- 6) The green house is next to the white house.
+ 6) The green house is to the right of the white house.
  7) The Winston smoker has a serpent.
  8) In the yellow house they smoke Kool.
  9) In the middle house they drink milk.
@@ -42,7 +42,7 @@ start :-
 	member([spanish,dog,_,_,_],Sol),     % 3
 	member([_,_,_,coffee,green],Sol),    % 4
 	member([ukrainian,_,_,tea,_],Sol),   % 5
-	next([_,_,_,_,white],[_,_,_,_,green], Sol), % 6
+	nextto([_,_,_,_,white],[_,_,_,_,green], Sol), % 6
 	member([_,snake,winston,_,_],Sol),   % 7
 	member([_,_,kool,_,yellow],Sol),     % 8
 	Sol = [_,_,[_,_,_,milk,_],_,_],      % 9
