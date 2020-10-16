@@ -1,6 +1,6 @@
 /*  File: bibmm.pl  Author: MMalita
 Work in Progress!! Library for Logic Puzzles
-	SWI: append/3 member/2 intersection/3 permutations/2 flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
+	SWI: append/3 member/2 intersection/3 permutation/2 flatten/2 last/2 length/2 numlist(1,N,L) sumlist/2
 	all/3
 	all_prop(P,L): if all in a list have Property P/1
 	arrange/3
@@ -56,6 +56,7 @@ Work in Progress!! Library for Logic Puzzles
 	count_list_comb/3,
 	right/3,
 	next/3,
+	before/3,
 	neighbor/5,
 	neighbour/5,
 	diagonal/2,
@@ -71,7 +72,10 @@ first(List,H) :- List=[H|_].
 generate_sol(S,N) :- length(S,N).
 
 % write_list(L). Format predicates.
-write_list(L) :- forall(member(X,L),(write(X),nl)).
+write_list(L) :-
+	forall(member(X,L),
+		   (write(X), nl)
+		  ).
 
 /* count(A,L,N). Counts occurrences
 	?- count(a,[b,a,c,d,a],N).
@@ -89,7 +93,7 @@ count(A,[_|L],N) :- count(A,L,N).
 	?- count_prop(atomic,[b,[a,c],d,a],N).
 	N = 3
 */
-count_prop(P,[],0).
+count_prop(_P,[],0).
 count_prop(P,[A|L],N) :-
 	F=..[P,A],
 	call(F),
@@ -102,7 +106,7 @@ count_prop(P,[_|L],N) :- count_prop(P,L,N).
 P = integer,
 L = [1, 2, 3].
 */
-all_prop(P,[]).
+all_prop(_P,[]).
 all_prop(P,[H|T]) :-
 	F=..[P,H],
 	call(F),
@@ -164,7 +168,7 @@ arrange(N,L,X) :-
 	is_set(X).
 
 no_duplicates(M) :- is_set(M).
-alldifferent(M) :-  is_set(L).
+alldifferent(M) :-  is_set(M).
 
 /* list_arrange(N,L,Res).
 	?- list_arrange(2,[a,b,c,d],R).
@@ -180,7 +184,7 @@ count_list_arrange(N,L,Many) :-
 	list_arrange(N,L,Res),
 	length(Res,Many).
 
-list_permutations(L,R) :- findall(X,permutations(L,X),Res).
+list_permutations(L,Res) :- findall(X,permutation(L,X),Res).
 
 % count_list_permutations(L,N). N=length(L)!
 count_list_permutations(L,N) :-
@@ -207,7 +211,7 @@ rest(X,[X|T],T) :- !.
 rest(X,[_|T],R) :- rest(X,T,R).
 */
 % same as
-rest(A,L,R) :- append(_,[A|R],L), !.
+rest(A,L,R) :- append(_X,[A|R],L), !.
 
 /* comb(N,L,Res). Combinations. Arrangements without "order".
 	| ?- comb(2,[a,b,c],I).
@@ -263,12 +267,21 @@ right(X,Y,L) :- nextto(X,Y,L).
 */
 next(X,Y,L) :- nextto(X,Y,L) ; nextto(Y,X,L).
 
+/* before(X,Y,List) checks if X is before Y in the List.
+	Starts from Left to right (normal order...).
+	?- before(a,c,[m,a,v,c,d]).
+	true
+*/
+before(X,Y,L) :-
+	append(_,[X|R],L),
+	member(Y,R).
+
 /* neighbor(+X,+Y,X1,Y1,+S). Two cells are neighbors in an array size S
 - starts from 0. Assume X and Y are in the range 0 - S.
 between(0,I,5) means 0 <= I <= 5
-	?-neighbor(1,1,2,2,3).
+	?- neighbor(1,1,2,2,3).
 	true
-	?-neighbor(1,2,I,J,2).
+	?- neighbor(1,2,I,J,2).
 	I = J = 2 ; I = 0, J = 2 ;
 	I = J = 1 ; I = 2, J = 1 ; I = 0, J = 1 ;
 */
@@ -289,7 +302,7 @@ diagonal(X/Y,X1/Y1) :-
 	A is abs(X-X1),
 	A is abs(Y-Y1).
 % Not on the same diagonal
-not_diagonal([X/Y,X1/Y1]) :-
+not_diagonal(X/Y,X1/Y1) :-
 	A is abs(X-X1),
 	B is abs(Y-Y1),
 	A \= B.
